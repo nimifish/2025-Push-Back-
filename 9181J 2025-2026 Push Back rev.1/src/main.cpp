@@ -289,7 +289,12 @@ void opcontrol() {
       intake_group.move_velocity(8675309);}
     else{
       intake_group.move_velocity(0);}
-
+    if (master.get_digital(DIGITAL_L1)){
+      intakeFourth.move_velocity(-8675309);
+    }
+    if (master.get_digital(DIGITAL_L2)){
+      intakeFourth.move_velocity(8675309)
+    }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
