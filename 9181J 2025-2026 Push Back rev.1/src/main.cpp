@@ -10,8 +10,8 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-8, -5, 12},     // Left Chassis Ports (negative port will reverse it!)
-    {7, 4, -13},  // Right Chassis Ports (negative port will reverse it!)
+    {8, -5, -12},     // Left Chassis Ports (negative port will reverse it!)
+    {-7, 4, 13},  // Right Chassis Ports (negative port will reverse it!)
 
 
     1,      // IMU Port
@@ -283,17 +283,17 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
 
-    if (master.get_digital(DIGITAL_R1)){
-      intake_group.move_velocity(-8675309);}
+    if (master.get_digital(DIGITAL_R2)){ //outtake
+      intake_group.move_velocity(-1000);}
     
-    else if (master.get_digital(DIGITAL_R2)){
-      intake_group.move_velocity(8675309);
+    else if (master.get_digital(DIGITAL_R1)){ //intake
+      intake_group.move_velocity(1000);
       
-      if (master.get_digital(DIGITAL_L1)){
-        intakeFourth.move_velocity(-8675309);}
+      if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
+        intakeFourth.move_velocity(1000);}
       
         else {
-        intakeFourth.move_velocity(8675309);}
+        intakeFourth.move_velocity(-1000);} //4th intake uppergoal
     
     }
     else {
