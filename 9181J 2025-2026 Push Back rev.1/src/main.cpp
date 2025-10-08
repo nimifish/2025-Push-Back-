@@ -297,7 +297,9 @@ void opcontrol() {
     
     }
     else {
-      intake_group.move_velocity(0);}
+      intake_group.move_velocity(0);
+      intakeFourth.move_velocity(0);
+    }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
