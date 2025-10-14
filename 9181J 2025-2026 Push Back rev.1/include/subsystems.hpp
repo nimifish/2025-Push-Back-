@@ -20,4 +20,4 @@ inline pros::Motor intakeFourth(15);
 // other stuffs yeah
 
 pros::Optical color_sort(21);
-std::string teamcolor = "Red";
+std::string teamcolor = "Red"; //need a way to change this
