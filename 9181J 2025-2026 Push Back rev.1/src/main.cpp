@@ -289,6 +289,8 @@ void opcontrol() {
     else if (master.get_digital(DIGITAL_R1)){ //intake
       intake_group.move_velocity(1000);
       
+      double getcolor = color_sort.get_hue(); //get the raw color data of the block. needs to have leniency and stuffs.
+
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
         intakeFourth.move_velocity(1000);}
       

@@ -17,8 +17,6 @@ inline pros::Motor intakeFourth(15);
 // extern pros::ADIDigitalOut littleSirWilliam('A');
 
 
-// Your motors, sensors, etc. should go here.  Below are examples
+// other stuffs yeah
 
-
-// inline pros::Motor intake(1);
-// inline pros::adi::DigitalIn limit_switch('A');
+pros::Optical color_sort(21);
