@@ -9,3 +9,8 @@ Right - 7, 4, 13 <br/>
 ### Intake
 First + Second Stage - 20 <br/>
 Third Stage - 11 <br/>
+Fourth Stage - 15 <br/>
+
+### Other
+Little Will - H <br/>
+Color Sort - 21 (TEMP) <br/>
