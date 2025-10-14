@@ -294,21 +294,20 @@ void opcontrol() {
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
         intakeFourth.move_velocity(1000);}
       
-        else {
+        else { //this part is all for uppergoal
           
           if (master.get_digital(DIGITAL_Y)){ // hold button to **DISABLE** the color sort
             intakeFourth.move_velocity(-1000);} // just go in the top one.
 
           else{
-            
+
             if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){ // if the color is close enough to the one we want
               intakeFourth.move_velocity(-1000);} // go in the top one
 
             else{
               intakeFourth.move_velocity(1000);} // do not do that. no.
           }
-
-        } //4th intake uppergoal
+        }
     
     }
     else {
