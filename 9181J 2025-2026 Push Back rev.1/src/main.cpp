@@ -296,13 +296,17 @@ void opcontrol() {
       
         else {
           
-          if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){
-            intakeFourth.move_velocity(-1000);}
+          if (master.get_digital(DIGITAL_Y)){ // hold button to **DISABLE** the color sort
+            intakeFourth.move_velocity(-1000);} // just go in the top one.
+
           else{
-            intakeFourth.move_velocity(1000);}
-          // if (master.get_digital(DIGITAL_Y)){ // hold button to **DISABLE** the color sort
             
-          // }
+            if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){ // if the color is close enough to the one we want
+              intakeFourth.move_velocity(-1000);} // go in the top one
+
+            else{
+              intakeFourth.move_velocity(1000);} // do not do that. no.
+          }
 
         } //4th intake uppergoal
     
