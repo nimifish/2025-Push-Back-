@@ -14,9 +14,10 @@ inline pros::MotorGroup intake_group({20, 11});
 inline pros::Motor intakeFourth(15);
 
 // pneumatics
-// extern pros::ADIDigitalOut littleSirWilliam('A');
+// extern pros::ADIDigitalOut littleSirWilliam('H');
 
 
 // other stuffs yeah
 
 pros::Optical color_sort(21);
+std::string teamcolor = "Red";

@@ -289,13 +289,22 @@ void opcontrol() {
     else if (master.get_digital(DIGITAL_R1)){ //intake
       intake_group.move_velocity(1000);
       
-      double getcolor = color_sort.get_hue(); //get the raw color data of the block. needs to have leniency and stuffs.
+      double getHue = color_sort.get_hue(); //get the raw color data of the block. needs to have leniency and stuffs.
 
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
         intakeFourth.move_velocity(1000);}
       
         else {
-        intakeFourth.move_velocity(-1000);} //4th intake uppergoal
+          
+          if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){
+            intakeFourth.move_velocity(-1000);}
+          else{
+            intakeFourth.move_velocity(1000);}
+          // if (master.get_digital(DIGITAL_Y)){ // hold button to **DISABLE** the color sort
+            
+          // }
+
+        } //4th intake uppergoal
     
     }
     else {
