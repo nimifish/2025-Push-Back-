@@ -310,7 +310,7 @@ void opcontrol() {
         }
     
     }
-    else {
+    else { //if no buttons are pressed i surely hope the motors arent spinning.
       intake_group.move_velocity(0);
       intakeFourth.move_velocity(0);
     }
