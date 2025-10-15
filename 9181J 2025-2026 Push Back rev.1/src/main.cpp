@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -289,9 +288,11 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_L2)){ // L2 for little will
       if (lwState == false){ // if little will is off, turn on
-        littleSirWilliam.set_value(true);}
+        littleSirWilliam.set_value(true);
+        lwState = true;}
       else if (lwState == true){ // if little will is on, turn off
-        littleSirWilliam.set_value(false);}
+        littleSirWilliam.set_value(false);
+        lwState = false;}
       pros::delay(10); // prevent double pressing
     }
 
@@ -300,9 +301,11 @@ void opcontrol() {
 
     if (master.get_digital_new_press(DIGITAL_Y)){ // Y for descore mech
       if (dsState == false){ // if descore mech is off, turn on
-        descore_mech.set_value(true);}
+        descore_mech.set_value(true);
+        dsState = true;}
       else if (dsState == true){ // if descore mech is on, turn off
-        descore_mech.set_value(false);}
+        descore_mech.set_value(false);
+        dsState = false;}
       pros::delay(10); // prevent double pressing
     }
 
@@ -310,32 +313,20 @@ void opcontrol() {
     // INTAKE CODE
 
     if (master.get_digital(DIGITAL_R2)){ //outtake
-      intake_group.move_velocity(-1000);}
+      outtake();}
     
     else if (master.get_digital(DIGITAL_R1)){ //intake
-      intake_group.move_velocity(1000);
-      
-      double getHue = color_sort.get_hue(); //get the raw color data of the block. 
 
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
-        intakeFourth.move_velocity(1000);}
-      
-        else { //this part is all for uppergoal
-          
-          if (master.get_digital(DIGITAL_X)){ // hold button to **DISABLE** the color sort
-            intakeFourth.move_velocity(-1000);} // just go in the top one.
+        intakeLowerGoal();}
 
-          else{
-
-            if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){ // if the color is close enough to the one we want
-              intakeFourth.move_velocity(-1000);} // go in the top one, might not work because we have to tweak the delay and stuff.
-
-            else{
-              intakeFourth.move_velocity(1000);} // do not do that. no.
-          }
-        }
-    
+      // else if (master.get_digital(DIGITAL_X)){ // hold button to **DISABLE** the color sort
+      //   intakeUpperGoal();} // just go in the top one.
+      else { //this part is all for uppergoal
+        intakeUpperGoal();
+      }
     }
+    
     else { //if no buttons are pressed i surely hope the motors arent spinning.
       intake_group.move_velocity(0);
       intakeFourth.move_velocity(0);
