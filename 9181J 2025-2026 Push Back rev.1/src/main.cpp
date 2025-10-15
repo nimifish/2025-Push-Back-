@@ -283,26 +283,52 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
 
+    // LITTLE WILL CODE
+
+    littleSirWilliam.set_value(false); // before we do stuff, make sure the little will isnt extended
+
+    if (master.get_digital_new_press(DIGITAL_L2)){ // L2 for little will
+      if (lwState == false){ // if little will is off, turn on
+        littleSirWilliam.set_value(true);}
+      else if (lwState == true){ // if little will is on, turn off
+        littleSirWilliam.set_value(false);}
+      pros::delay(10); // prevent double pressing
+    }
+
+
+    // DESCORE MECH CODE
+
+    if (master.get_digital_new_press(DIGITAL_Y)){ // Y for descore mech
+      if (dsState == false){ // if descore mech is off, turn on
+        descore_mech.set_value(true);}
+      else if (dsState == true){ // if descore mech is on, turn off
+        descore_mech.set_value(false);}
+      pros::delay(10); // prevent double pressing
+    }
+
+
+    // INTAKE CODE
+
     if (master.get_digital(DIGITAL_R2)){ //outtake
       intake_group.move_velocity(-1000);}
     
     else if (master.get_digital(DIGITAL_R1)){ //intake
       intake_group.move_velocity(1000);
       
-      double getHue = color_sort.get_hue(); //get the raw color data of the block. needs to have leniency and stuffs.
+      double getHue = color_sort.get_hue(); //get the raw color data of the block. 
 
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
         intakeFourth.move_velocity(1000);}
       
         else { //this part is all for uppergoal
           
-          if (master.get_digital(DIGITAL_Y)){ // hold button to **DISABLE** the color sort
+          if (master.get_digital(DIGITAL_X)){ // hold button to **DISABLE** the color sort
             intakeFourth.move_velocity(-1000);} // just go in the top one.
 
           else{
 
             if (((getHue < 20 or getHue > 340) and (teamcolor == "Red")) or ((270 > getHue > 180) and (teamcolor == "Blue"))){ // if the color is close enough to the one we want
-              intakeFourth.move_velocity(-1000);} // go in the top one
+              intakeFourth.move_velocity(-1000);} // go in the top one, might not work because we have to tweak the delay and stuff.
 
             else{
               intakeFourth.move_velocity(1000);} // do not do that. no.
