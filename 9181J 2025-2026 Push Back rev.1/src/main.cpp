@@ -284,16 +284,16 @@ void opcontrol() {
 
     // LITTLE WILL CODE
 
-    littleSirWilliam.set_value(false); // before we do stuff, make sure the little will isnt extended
+    littleSirWilliam.set_value(false); // ensure little will does not start as extended
 
-    if (master.get_digital_new_press(DIGITAL_L2)){ // L2 for little will
-      if (lwState == false){ // if little will is off, turn on
+    if (master.get_digital_new_press(DIGITAL_L2)){ // L2 button toggle for little will
+      if (lwState == false){ // if the little will mechanism is not extended, activate the piston
         littleSirWilliam.set_value(true);
         lwState = true;}
-      else if (lwState == true){ // if little will is on, turn off
+      else if (lwState == true){ // if the little will mechanism is extended, deactivate the piston
         littleSirWilliam.set_value(false);
         lwState = false;}
-      pros::delay(10); // prevent double pressing
+      pros::delay(10); // in case of "double pressing"
     }
 
 
