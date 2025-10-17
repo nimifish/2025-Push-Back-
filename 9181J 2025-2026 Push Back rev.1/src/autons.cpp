@@ -391,6 +391,21 @@ void red_autonomous_left() {
   chassis.pid_wait(); 
   chassis.pid_turn_set(-100_deg, TURN_SPEED); 
   chassis.pid_wait();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   chassis.pid_drive_set(-13_in, DRIVE_SPEED, true); 
   chassis.pid_wait(); 
   intakeLowerGoal();
