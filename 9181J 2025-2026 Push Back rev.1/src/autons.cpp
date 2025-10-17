@@ -376,3 +376,19 @@ void measure_offsets() {
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+void blue_autonomous_right() {
+  // teamcolor = "Blue";
+}
+void red_autonomous_left() {
+  // teamcolor = "Red";
+}
+void blue_autonomous_right() {
+  // teamcolor = "Blue";
+}
+void red_autonomous_left() {
+  // teamcolor = "Red";
+{
+void skills() {
+  // skills code
+}
