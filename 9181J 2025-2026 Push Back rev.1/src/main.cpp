@@ -271,18 +271,13 @@ void opcontrol() {
 
 
   while (true) {
-    // Gives you some extras to make EZ-Template ezier
+    // Gives you some extras to make EZ-Template easier
     ez_template_extras();
 
+    // DRIVE TRAIN
+    chassis.opcontrol_arcade_standard(ez::SPLIT);   // Currently using Standard Split Arcade drivetrain controls
 
-    // chassis.opcontrol_tank();  // Tank control
-    chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
-    // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
-    // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
-    // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
-
-
-    // LITTLE WILL CODE
+    // LITTLE WILL
 
     littleSirWilliam.set_value(false); // ensure little will does not start as extended
 
@@ -297,20 +292,20 @@ void opcontrol() {
     }
 
 
-    // DESCORE MECH CODE
+    // DESCORE MECHANISM
 
-    if (master.get_digital_new_press(DIGITAL_Y)){ // Y for descore mech
-      if (dsState == false){ // if descore mech is off, turn on
+    if (master.get_digital_new_press(DIGITAL_Y)){ // Y button toggle for descore mechanism
+      if (dsState == false){ // if descore mech is deactivated, activate it
         descore_mech.set_value(true);
         dsState = true;}
-      else if (dsState == true){ // if descore mech is on, turn off
+      else if (dsState == true){ // if descore mech is activated, deactivate it
         descore_mech.set_value(false);
         dsState = false;}
-      pros::delay(10); // prevent double pressing
+      pros::delay(10); // in case of "double pressing"
     }
 
 
-    // INTAKE CODE
+    // INTAKE
 
     if (master.get_digital(DIGITAL_R2)){ //outtake
       outtake();}
