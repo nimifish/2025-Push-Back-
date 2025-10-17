@@ -16,10 +16,11 @@ inline pros::Motor intakeFourth(15);
 // pneumatics
 extern pros::ADIDigitalOut littleSirWilliam('H');
 extern pros::ADIDigitalOut descore_mech('C');
+
+// Sensors
+pros::Optical color_sort(21);
+
+// Global Variables
 bool lwState = false;
 bool dsState = false;
-
-// other stuffs yeah
-
-pros::Optical color_sort(21);
 std::string teamcolor = "Red"; //need a way to change this
