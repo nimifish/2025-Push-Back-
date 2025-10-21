@@ -280,7 +280,6 @@ void opcontrol() {
     // pneumatics
     pros::adi::DigitalOut littleSirWilliam('H', false);
     pros::adi::DigitalOut descore_mech('C');
-    littleSirWilliam.set_value(false); // ensure little will does not start as extended
 
     if (master.get_digital_new_press(DIGITAL_L2)){ // L2 button toggle for little will
       if (lwState == false){ // if the little will mechanism is not extended, activate the piston
