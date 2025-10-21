@@ -1,5 +1,10 @@
 #include "main.h"
 
+// bool color_sort_state = false;
+bool lwState = false;
+bool dsState = false;
+std::string teamcolor = "Red"; //need a way to change this
+
 void intakeLowerGoal() {
     intake_group.move_velocity(1000);
     intakeFourth.move_velocity(1000);

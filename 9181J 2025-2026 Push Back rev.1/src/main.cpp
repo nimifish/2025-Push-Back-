@@ -5,7 +5,6 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
@@ -278,7 +277,9 @@ void opcontrol() {
     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Currently using Standard Split Arcade drivetrain controls
 
     // LITTLE WILL
-
+    // pneumatics
+    pros::adi::DigitalOut littleSirWilliam('H', false);
+    pros::adi::DigitalOut descore_mech('C');
     littleSirWilliam.set_value(false); // ensure little will does not start as extended
 
     if (master.get_digital_new_press(DIGITAL_L2)){ // L2 button toggle for little will
