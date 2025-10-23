@@ -12,7 +12,7 @@ ez::Drive chassis(
     {-7, 4, 13},  // Right Chassis Ports (negative port will reverse it!)
 
 
-    1,      // IMU Port
+    2,      // IMU Port
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -65,6 +65,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"Blue Autonomous Left", blue_autonomous_left},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
@@ -281,14 +282,14 @@ void opcontrol() {
     pros::adi::DigitalOut littleSirWilliam('H', false);
     pros::adi::DigitalOut descore_mech('C');
 
-    if (master.get_digital_new_press(DIGITAL_L2)){ // L2 button toggle for little will
+    if (master.get_digital(DIGITAL_X)){ // L2 button toggle for little will
       if (lwState == false){ // if the little will mechanism is not extended, activate the piston
         littleSirWilliam.set_value(true);
         lwState = true;}
       else if (lwState == true){ // if the little will mechanism is extended, deactivate the piston
         littleSirWilliam.set_value(false);
         lwState = false;}
-      pros::delay(10); // in case of "double pressing"
+      pros::delay(1000); // in case of "double pressing"
     }
 
 
@@ -327,6 +328,9 @@ void opcontrol() {
       intakeFourth.move_velocity(0);
     }
 
+    if (master.get_digital_new_press(DIGITAL_LEFT)) {
+      blue_autonomous_left();
+    }
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

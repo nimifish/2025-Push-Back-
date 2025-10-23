@@ -391,21 +391,6 @@ void red_autonomous_left() {
   chassis.pid_wait(); 
   chassis.pid_turn_set(-100_deg, TURN_SPEED); 
   chassis.pid_wait();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   chassis.pid_drive_set(-13_in, DRIVE_SPEED, true); 
   chassis.pid_wait(); 
   intakeLowerGoal();
@@ -424,24 +409,28 @@ void red_autonomous_left() {
 
 void blue_autonomous_left() {
   // teamcolor = "Blue";
-  chassis.pid_drive_set(26_in, DRIVE_SPEED, true); 
+  intake_group.move_velocity(20000);
+  chassis.pid_drive_set(40_in, 55, true); 
   chassis.pid_wait(); 
-  chassis.pid_turn_set(-100_deg, TURN_SPEED); 
+  chassis.pid_drive_set(-9_in, 80, true); 
+  chassis.pid_wait(); 
+  chassis.pid_turn_set(-100_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-13_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED, true); 
   chassis.pid_wait(); 
-  intakeLowerGoal();
-  pros::delay(2000);
-  chassis.pid_drive_set(42_in, DRIVE_SPEED, true); 
-  chassis.pid_wait(); 
-  chassis.pid_turn_set(-149_deg, TURN_SPEED); 
-  chassis.pid_wait();
-  chassis.pid_drive_set(24_in, DRIVE_SPEED, true); 
-  chassis.pid_wait(); 
-  pros::delay(2000);
-  chassis.pid_drive_set(-35_in, DRIVE_SPEED, true); 
-  chassis.pid_wait(); 
-  intakeUpperGoal();
+  intakeFourth.move_velocity(-1000);
+  pros::delay(1000);
+  intakeFourth.move_velocity(0);
+  // chassis.pid_drive_set(42_in, DRIVE_SPEED, true); 
+  // chassis.pid_wait(); 
+  // chassis.pid_turn_set(-149_deg, TURN_SPEED); 
+  // chassis.pid_wait();
+  // chassis.pid_drive_set(24_in, DRIVE_SPEED, true); 
+  // chassis.pid_wait(); 
+  // pros::delay(2000);
+  // chassis.pid_drive_set(-35_in, DRIVE_SPEED, true); 
+  // chassis.pid_wait(); 
+  // intakeUpperGoal();
 }
 
 void skills() {
