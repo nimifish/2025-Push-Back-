@@ -282,7 +282,7 @@ void opcontrol() {
 
     // LITTLE WILL
 
-    if (master.get_digital(DIGITAL_X)){ // L2 button toggle for little will
+    if (master.get_digital_new_press(DIGITAL_X)){ // L2 button toggle for little will
       if (lwState == false){ // if the little will mechanism is not extended, activate the piston
         littleSirWilliam.set_value(true);
         lwState = true;}
