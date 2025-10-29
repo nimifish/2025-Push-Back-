@@ -269,6 +269,9 @@ void opcontrol() {
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
+  // pneumatics
+  pros::adi::DigitalOut littleSirWilliam('H', false);
+  pros::adi::DigitalOut descore_mech('G');
 
   while (true) {
     // Gives you some extras to make EZ-Template easier
@@ -278,11 +281,8 @@ void opcontrol() {
     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Currently using Standard Split Arcade drivetrain controls
 
     // LITTLE WILL
-    // pneumatics
-    pros::adi::DigitalOut littleSirWilliam('H', false);
-    pros::adi::DigitalOut descore_mech('C');
 
-    if (master.get_digital_new_press(DIGITAL_X)){ // L2 button toggle for little will
+    if (master.get_digital(DIGITAL_X)){ // L2 button toggle for little will
       if (lwState == false){ // if the little will mechanism is not extended, activate the piston
         littleSirWilliam.set_value(true);
         lwState = true;}
