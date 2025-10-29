@@ -17,6 +17,7 @@ void intakeUpperGoal() {
 
 void outtake() {
     intake_group.move_velocity(-1000);
+    intakeFourth.move_velocity(1000);
 }
 
 void intakeSorter() {
