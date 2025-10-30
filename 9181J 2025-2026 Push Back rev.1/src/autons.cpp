@@ -62,7 +62,7 @@ void red_autonomous_left() {
   pros::adi::DigitalOut descore_mech('G');
   descore_mech.set_value(true);
   intake_group.move_velocity(20000);
-  chassis.pid_drive_set(40_in, 55, true); 
+  chassis.pid_drive_set(40_in, 35, true); 
   chassis.pid_wait(); 
   chassis.pid_drive_set(-9_in, 80, true); 
   chassis.pid_wait(); 
@@ -81,11 +81,12 @@ void red_autonomous_left() {
   chassis.pid_wait();
   intake_group.move_velocity(20000);
   littleSirWilliam.set_value(true);
-  chassis.pid_drive_set(29_in, 30, true); 
+  chassis.pid_drive_set(30_in, 30, true); 
   chassis.pid_wait(); 
   pros::delay(2000);
-  chassis.pid_drive_set(-30_in, 60, true); 
+  chassis.pid_drive_set(-31_in, 60, true); 
   chassis.pid_wait(); 
+  intake_group.move_velocity(20000);
   intakeFourth.move_velocity(-1000);
   pros::delay(4000);
 }

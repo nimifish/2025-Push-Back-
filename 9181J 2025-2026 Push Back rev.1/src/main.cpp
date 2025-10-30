@@ -217,7 +217,7 @@ void ez_template_extras() {
     //  When enabled:
     //  * use A and Y to increment / decrement the constants
     //  * use the arrow keys to navigate the constants
-    if (master.get_digital_new_press(DIGITAL_X))
+    if (master.get_digital_new_press(DIGITAL_LEFT))
       chassis.pid_tuner_toggle();
 
 
@@ -260,8 +260,10 @@ void opcontrol() {
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   // pneumatics
-  pros::adi::DigitalOut littleSirWilliam('H', false);
+  pros::adi::DigitalOut littleSirWilliam('H');
   pros::adi::DigitalOut descore_mech('G');
+  lwState = false;
+  dsState = false;
 
   while (true) {
     // Gives you some extras to make EZ-Template easier
@@ -279,7 +281,7 @@ void opcontrol() {
       else if (lwState == true){ // if the little will mechanism is extended, deactivate the piston
         littleSirWilliam.set_value(false);
         lwState = false;}
-      pros::delay(1000); // in case of "double pressing"
+      pros::delay(10); // in case of "double pressing"
     }
 
 
