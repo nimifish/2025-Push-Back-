@@ -87,8 +87,10 @@ void red_autonomous_left() {
   chassis.pid_wait();
   chassis.pid_drive_set(-15_in, DRIVE_SPEED, true); 
   chassis.pid_wait(); 
+  intake_group.move_velocity(-5000);
+  pros::delay(500);
   intake_group.move_velocity(20000);
-  intakeFourth.move_velocity(1000);
+  intakeFourth.move_velocity(5000); // score on middle goal
   pros::delay(1000);
   intakeFourth.move_velocity(0);
   descore_mech.set_value(false);
@@ -97,14 +99,16 @@ void red_autonomous_left() {
   chassis.pid_turn_set(-149_deg, TURN_SPEED); 
   chassis.pid_wait();
   intake_group.move_velocity(20000);
-  littleSirWilliam.set_value(true);
+  littleSirWilliam.set_value(true); // take blocks from loader
   chassis.pid_drive_set(30_in, 30, true); 
   chassis.pid_wait(); 
   pros::delay(2000);
   chassis.pid_drive_set(-31_in, 60, true); 
   chassis.pid_wait(); 
+  intake_group.move_velocity(-5000);
+  pros::delay(200);
   intake_group.move_velocity(20000);
-  intakeFourth.move_velocity(-1000);
+  intakeFourth.move_velocity(-1000); // score on long goal
   pros::delay(4000);
 }
 
