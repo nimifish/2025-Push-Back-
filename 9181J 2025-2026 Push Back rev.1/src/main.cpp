@@ -65,8 +65,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Blue Autonomous Left", blue_autonomous_left},
       {"Blue Autonomous Right", blue_autonomous_right},
+      {"Blue Autonomous Left", blue_autonomous_left},
       {"Red Autonomous Left", red_autonomous_left},
       {"Red Autonomous Right", red_autonomous_right},
       {"Skills", skills},
@@ -321,7 +321,7 @@ void opcontrol() {
     }
 
     if (master.get_digital_new_press(DIGITAL_LEFT)) {
-      blue_autonomous_left();
+      blue_autonomous_right();
     }
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

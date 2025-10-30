@@ -49,6 +49,23 @@ void default_constants() {
 }
 
 void blue_autonomous_right() {
+  pros::adi::DigitalOut littleSirWilliam('H', false);
+  pros::adi::DigitalOut descore_mech('G');
+  descore_mech.set_value(true);
+  intakeFirst.move_velocity(20000);
+  chassis.pid_drive_set(40_in, 35, true); 
+  chassis.pid_wait(); 
+  chassis.pid_drive_set(-10_in, 80, true); 
+  chassis.pid_wait();
+  chassis.pid_turn_set(-80_deg, 50); 
+  chassis.pid_wait();
+  intakeFirst.move_velocity(0);
+  chassis.pid_drive_set(17_in, 80, true); 
+  chassis.pid_wait();
+  intake_group.move_velocity(-80000);
+  pros::delay(1500);
+  chassis.pid_drive_set(-9_in, 80, true); 
+  chassis.pid_wait();
   // teamcolor = "Blue";
 }
 
@@ -64,7 +81,7 @@ void red_autonomous_left() {
   intake_group.move_velocity(20000);
   chassis.pid_drive_set(40_in, 35, true); 
   chassis.pid_wait(); 
-  chassis.pid_drive_set(-9_in, 80, true); 
+  chassis.pid_drive_set(-10_in, 80, true); 
   chassis.pid_wait(); 
   chassis.pid_turn_set(-100_deg, 50); 
   chassis.pid_wait();
