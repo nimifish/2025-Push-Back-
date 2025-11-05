@@ -259,7 +259,7 @@ void opcontrol() {
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   // pneumatics
-  pros::adi::DigitalOut littleSirWilliam('H');
+  pros::adi::DigitalOut littleSirWilliam('F');
   pros::adi::DigitalOut descore_mech('G');
   lwState = false;
   dsState = false;
