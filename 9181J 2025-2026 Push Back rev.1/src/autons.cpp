@@ -49,7 +49,7 @@ void default_constants() {
 }
 
 void blue_autonomous_right() {
-  pros::adi::DigitalOut littleSirWilliam('H', false);
+  pros::adi::DigitalOut littleSirWilliam('F', false);
   pros::adi::DigitalOut descore_mech('G');
   descore_mech.set_value(true);
   intakeFirst.move_velocity(20000);
@@ -57,15 +57,38 @@ void blue_autonomous_right() {
   chassis.pid_wait(); 
   chassis.pid_drive_set(-10_in, 80, true); 
   chassis.pid_wait();
-  chassis.pid_turn_set(-80_deg, 50); 
+  chassis.pid_turn_set(-70_deg, 50); 
   chassis.pid_wait();
   intakeFirst.move_velocity(0);
-  chassis.pid_drive_set(17_in, 80, true); 
+  chassis.pid_drive_set(15_in, 80, true); 
   chassis.pid_wait();
+  intake_group.move_velocity(800);
+  pros::delay(500);
   intake_group.move_velocity(-80000);
   pros::delay(1500);
-  chassis.pid_drive_set(-9_in, 80, true); 
+  intake_group.move_velocity(800);
+  pros::delay(300);
+  intake_group.move_velocity(0);
+  chassis.pid_drive_set(-42_in, 80, true); 
   chassis.pid_wait();
+  chassis.pid_turn_set(161_deg, 50); 
+  chassis.pid_wait();
+  intake_group.move_velocity(20000);
+  littleSirWilliam.set_value(true); 
+  chassis.pid_drive_set(32_in, 30, true); 
+  chassis.pid_wait(); 
+  pros::delay(2000);
+  chassis.pid_drive_set(-20_in, 60, true); 
+  descore_mech.set_value(false);
+  intake_group.move_velocity(0);
+  chassis.pid_wait(); 
+  chassis.pid_drive_set(-11_in, 60, true); 
+  chassis.pid_wait(); 
+  intake_group.move_velocity(-5000);
+  pros::delay(200);
+  intake_group.move_velocity(20000);
+  intakeFourth.move_velocity(-1000); // score on long goal
+  pros::delay(4000);
   // teamcolor = "Blue";
 }
 
@@ -113,14 +136,15 @@ void red_autonomous_left() {
 }
 
 void blue_autonomous_left() {
-  // teamcolor = "Blue";
+  // skills code
   pros::adi::DigitalOut littleSirWilliam('F', false);
   pros::adi::DigitalOut descore_mech('G');
+  littleSirWilliam.set_value(false);
   descore_mech.set_value(true);
-  chassis.pid_drive_set(30_in, 55, true); 
+  chassis.pid_drive_set(20_in, 55, true); 
   chassis.pid_wait(); 
-  intake_group.move_velocity(20000);
-  chassis.pid_drive_set(10_in, 55, true); 
+  intakeFirst.move_velocity(20000);
+  chassis.pid_drive_set(20_in, 55, true); 
   chassis.pid_wait(); 
   chassis.pid_drive_set(-9_in, 80, true); 
   chassis.pid_wait(); 
@@ -129,23 +153,32 @@ void blue_autonomous_left() {
   chassis.pid_drive_set(-15_in, DRIVE_SPEED, true); 
   chassis.pid_wait(); 
   intake_group.move_velocity(20000);
-  intakeFourth.move_velocity(700);
-  pros::delay(1000);
+  pros::delay(200);
+  intake_group.move_velocity(-2000);
+  pros::delay(300);
+  intake_group.move_velocity(20000);
+  intakeFourth.move_velocity(2000);
+  pros::delay(1500);
   intakeFourth.move_velocity(0);
-  descore_mech.set_value(false);
-  chassis.pid_drive_set(46_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(44.5_in, 120, true); 
   chassis.pid_wait(); 
   chassis.pid_turn_set(-149_deg, TURN_SPEED); 
   chassis.pid_wait();
-  intake_group.move_velocity(20000);
   littleSirWilliam.set_value(true);
-  chassis.pid_drive_set(29_in, 30, true); 
+  intake_group.move_velocity(20000);
+  chassis.pid_drive_set(32_in, 50, true); 
   chassis.pid_wait(); 
-  pros::delay(2000);
+  pros::delay(600);
   chassis.pid_drive_set(-30_in, 60, true); 
   chassis.pid_wait(); 
+  descore_mech.set_value(false);
+  intake_group.move_velocity(-2000);
+  pros::delay(200);
+  intake_group.move_velocity(2000);
   intakeFourth.move_velocity(-1000);
-  pros::delay(4000);
+  pros::delay(1400);
+  intakeFourth.move_velocity(0);
+  intake_group.move_velocity(0);
 }
 
 void skills() {
@@ -180,10 +213,10 @@ void skills() {
   chassis.pid_turn_set(-149_deg, TURN_SPEED); 
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
-  chassis.pid_drive_set(31_in, 40, true); 
+  chassis.pid_drive_set(32_in, 38, true); 
   chassis.pid_wait(); 
   pros::delay(2400);
-  chassis.pid_drive_set(-29_in, 60, true); 
+  chassis.pid_drive_set(-30_in, 60, true); 
   chassis.pid_wait(); 
   descore_mech.set_value(false);
   intake_group.move_velocity(-2000);
@@ -198,12 +231,12 @@ void skills() {
   littleSirWilliam.set_value(false);
   chassis.pid_turn_set(-239_deg, TURN_SPEED); 
   chassis.pid_wait();
-  chassis.pid_drive_set(90_in, 80, true); 
+  chassis.pid_drive_set(88_in, 80, true); 
   chassis.pid_wait(); 
   chassis.pid_turn_set(-14_deg, TURN_SPEED); 
   chassis.pid_wait();
   intakeFirst.move_velocity(2000);
-  chassis.pid_drive_set(39_in, 55, true); 
+  chassis.pid_drive_set(32_in, 55, true); 
   chassis.pid_wait(); 
   pros::delay(700);
   intakeFirst.move_velocity(0);
@@ -212,7 +245,7 @@ void skills() {
   intake_group.move_velocity(-10000);
   pros::delay(2000);
   intake_group.move_velocity(2000);
-  chassis.pid_drive_set(-48_in, 55, true); 
+  chassis.pid_drive_set(-45_in, 55, true); 
   chassis.pid_wait(); 
   chassis.pid_turn_set(-151_deg, TURN_SPEED); 
   chassis.pid_wait();
@@ -220,6 +253,7 @@ void skills() {
   chassis.pid_drive_set(32_in, 40, true); 
   chassis.pid_wait(); 
   pros::delay(2400);
+  littleSirWilliam.set_value(false);
   chassis.pid_drive_set(-29_in, 60, true); 
   chassis.pid_wait(); 
   descore_mech.set_value(false);
@@ -230,8 +264,14 @@ void skills() {
   pros::delay(1500);
   intakeFourth.move_velocity(0);
   intake_group.move_velocity(0);
+  chassis.pid_drive_set(2_in, 70, true); 
+  chassis.pid_wait(); 
   chassis.pid_turn_set(-106_deg, TURN_SPEED); 
   chassis.pid_wait();
-  chassis.pid_drive_set(32_in, 40, true); 
+  chassis.pid_drive_set(42_in, 70, true); 
+  chassis.pid_wait(); 
+  chassis.pid_turn_set(-61_deg, TURN_SPEED); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(22_in, 220, true); 
   chassis.pid_wait(); 
 }

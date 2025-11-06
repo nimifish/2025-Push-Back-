@@ -15,6 +15,11 @@ void intakeUpperGoal() {
     intakeFourth.move_velocity(-1000);
 }
 
+void intakeHoard() {
+    intake_group.move_velocity(1000);
+    intakeFourth.move_velocity(0);
+}
+
 void outtake() {
     intake_group.move_velocity(-1000);
     intakeFourth.move_velocity(1000);

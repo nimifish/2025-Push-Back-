@@ -64,9 +64,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Skills", skills},
       {"Blue Autonomous Right", blue_autonomous_right},
       {"Blue Autonomous Left", blue_autonomous_left},
+      {"Skills", skills},
       {"Red Autonomous Left", red_autonomous_left},
       {"Red Autonomous Right", red_autonomous_right},
   });
@@ -307,8 +307,8 @@ void opcontrol() {
       if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
         intakeLowerGoal();}
 
-      // else if (master.get_digital(DIGITAL_X)){ // hold button to **DISABLE** the color sort
-      //   intakeUpperGoal();} // just go in the top one.
+      // else if (master.get_digital(DIGITAL_L2)){ // hold button to hoard
+        // intakeHoard();} // hoard intake
       else { //this part is all for uppergoal
         intakeUpperGoal();
       }
