@@ -28,5 +28,6 @@ extern bool dsState;
 
 void intakeLowerGoal();
 void intakeUpperGoal();
+void intakeHoard();
 void intakeSorters();
 void outtake();

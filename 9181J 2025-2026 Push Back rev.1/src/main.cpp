@@ -304,13 +304,13 @@ void opcontrol() {
     
     else if (master.get_digital(DIGITAL_R1)){ //intake
 
-      if (master.get_digital(DIGITAL_L1)){ //4th intake switch lowergoal
+      if (master.get_digital(DIGITAL_L2)){ //4th intake switch lowergoal
         intakeLowerGoal();}
 
-      // else if (master.get_digital(DIGITAL_L2)){ // hold button to hoard
-        // intakeHoard();} // hoard intake
+      else if (master.get_digital(DIGITAL_L1)){ // hold button to hoard
+        intakeUpperGoal();} // hoard intake
       else { //this part is all for uppergoal
-        intakeUpperGoal();
+        intakeHoard();
       }
     }
     

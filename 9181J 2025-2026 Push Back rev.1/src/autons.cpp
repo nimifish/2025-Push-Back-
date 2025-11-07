@@ -55,30 +55,30 @@ void blue_autonomous_right() {
   intakeFirst.move_velocity(20000);
   chassis.pid_drive_set(40_in, 50, true); 
   chassis.pid_wait(); 
-  chassis.pid_drive_set(-12.5_in, 80, true); 
+  chassis.pid_drive_set(-13_in, 80, true); 
   chassis.pid_wait();
-  chassis.pid_turn_set(-70_deg, 50); 
+  chassis.pid_turn_set(-70_deg, 70); 
   chassis.pid_wait();
   intakeFirst.move_velocity(0);
-  chassis.pid_drive_set(13.5_in, 80, true); 
+  chassis.pid_drive_set(13.8_in, 70, true); 
   chassis.pid_wait();
+  intake_group.move_velocity(800);
+  pros::delay(100);
+  intake_group.move_velocity(-80000);
+  pros::delay(1200);
   intake_group.move_velocity(800);
   pros::delay(200);
-  intake_group.move_velocity(-80000);
-  pros::delay(1500);
-  intake_group.move_velocity(800);
-  pros::delay(300);
   intake_group.move_velocity(0);
-  chassis.pid_drive_set(-43_in, 70, true); 
+  chassis.pid_drive_set(-44.5_in, 90, true); 
   chassis.pid_wait();
+  littleSirWilliam.set_value(true);
   chassis.pid_turn_set(158_deg, 50); 
   chassis.pid_wait();
-  intake_group.move_velocity(20000);
-  littleSirWilliam.set_value(true); 
-  chassis.pid_drive_set(33_in, 40, true); 
+  intake_group.move_velocity(20000); 
+  chassis.pid_drive_set(34_in, 60, true); 
   chassis.pid_wait(); 
-  pros::delay(1000);
-  chassis.pid_drive_set(-20_in, 60, true); 
+  pros::delay(200);
+  chassis.pid_drive_set(-21_in, 60, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(163_deg, 50); 
   chassis.pid_wait();
@@ -90,7 +90,9 @@ void blue_autonomous_right() {
   pros::delay(200);
   intake_group.move_velocity(20000);
   intakeFourth.move_velocity(-1000); // score on long goal
-  pros::delay(4000);
+  pros::delay(900);
+  chassis.pid_drive_set(10_in, 100, true); 
+  chassis.pid_drive_set(-10_in, 100, true); 
   // teamcolor = "Blue";
 }
 
