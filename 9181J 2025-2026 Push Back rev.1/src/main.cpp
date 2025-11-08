@@ -69,6 +69,7 @@ void initialize() {
       {"Skills", skills},
       {"Red Autonomous Left", red_autonomous_left},
       {"Red Autonomous Right", red_autonomous_right},
+      {"Move Forwadr", move_forward}
   });
 
 
