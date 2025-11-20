@@ -17,6 +17,8 @@ void odom_boomerang_example();
 void odom_boomerang_injected_pure_pursuit_example();
 void measure_offsets();
 
+void elim_right();
+void elim_left();
 void blue_autonomous_right();
 void blue_autonomous_left();
 void red_autonomous_right();
