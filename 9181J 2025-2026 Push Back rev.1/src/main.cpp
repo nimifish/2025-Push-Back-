@@ -34,11 +34,8 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"Skills", skills},
-      {"Elim Autonomous Right", elim_right},
-      {"Blue Autonomous Right", blue_autonomous_right},
-      {"Blue Autonomous Left", blue_autonomous_left},
-      {"Red Autonomous Left", red_autonomous_left},
-      {"Red Autonomous Right", red_autonomous_right},
+      {"Autonomous Right", blue_autonomous_right},
+      {"Autonomous Left", blue_autonomous_left},
       {"Move Forward", move_forward}
   });
 
