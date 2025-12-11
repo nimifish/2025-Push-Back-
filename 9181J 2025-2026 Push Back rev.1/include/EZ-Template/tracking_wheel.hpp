@@ -46,7 +46,7 @@ class tracking_wheel {
   tracking_wheel(int smart_port, std::vector<int> ports, double wheel_diameter, double distance_to_center = 0.0, double ratio = 1.0);
 
   /**
-   * Creates a new tracking wheel with a Rotation sensor.
+   * Creates a new tracking wheel with a Rotation sensor. (USE ROTATION SENSOR ONE)
    *
    * \param port
    *        the port your Rotation sensor is plugged into, make this negative if reversed
