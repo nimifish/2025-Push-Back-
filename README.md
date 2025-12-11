@@ -16,7 +16,7 @@ Little Will - H <br/>
 Color Sort - 21 (TEMP) <br/>
 
 ## ODOM INFO
-Port - x
-Wheel Diameter - 2"
-Distance to Center - x
-Ratio - 1.0
+Port - x <br/>
+Wheel Diameter - 2" <br/>
+Distance to Center - x <br/>
+Ratio - 1.0 <br/>
