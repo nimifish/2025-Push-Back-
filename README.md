@@ -14,3 +14,9 @@ Fourth Stage - 15 <br/>
 ### Other
 Little Will - H <br/>
 Color Sort - 21 (TEMP) <br/>
+
+## ODOM INFO
+Port - x
+Wheel Diameter - 2"
+Distance to Center - x
+Ratio - 1.0
