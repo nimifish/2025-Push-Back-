@@ -33,6 +33,6 @@ void intakeSorters();
 void outtake();
 
 
-// tracking wheels
+// tracking wheel
 double odom_distance = 5.0; // replace with actual distance later
 ez::tracking_wheel vertical(1, 2.0, odom_distance, 1.0);
