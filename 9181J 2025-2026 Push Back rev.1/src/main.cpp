@@ -256,7 +256,7 @@ void opcontrol() {
     
     else { //if no buttons are pressed i surely hope the motors arent spinning.
       intake_group.move_velocity(0);
-      intakeFourth.move_velocity(0);
+      intakeSecond.move_velocity(0);
     }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

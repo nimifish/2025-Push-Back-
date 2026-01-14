@@ -9,9 +9,7 @@ extern Drive chassis;
 
 // intakes
 inline pros::Motor intakeFirst(20);
-inline pros::Motor intakeThird(21);
-inline pros::MotorGroup intake_group({20, 21});
-inline pros::Motor intakeFourth(15);
+inline pros::Motor intakeSecond(21);
 
 // // pneumatics
 // extern pros::ADIDigitalOut littleSirWilliam ('H', false);
@@ -31,3 +29,8 @@ void intakeUpperGoal();
 void intakeHoard();
 void intakeSorters();
 void outtake();
+
+
+// tracking wheel
+double odom_distance = 5.0; // replace with actual distance later
+ez::tracking_wheel vertical(1, 2.0, odom_distance, 1.0);
