@@ -36,7 +36,9 @@ void initialize() {
       {"Skills", skills},
       {"Autonomous Right", blue_autonomous_right},
       {"Autonomous Left", blue_autonomous_left},
-      {"Move Forward", move_forward}
+      {"Solo AWP", soloAWP},
+      {"Elim Right", elim_right},
+      {"Elim Left", elim_left},
   });
 
   // Initialize chassis and auton selector
@@ -255,7 +257,7 @@ void opcontrol() {
     }
     
     else { //if no buttons are pressed i surely hope the motors arent spinning.
-      intake_group.move_velocity(0);
+      intakeFirst.move_velocity(0);
       intakeSecond.move_velocity(0);
     }
 

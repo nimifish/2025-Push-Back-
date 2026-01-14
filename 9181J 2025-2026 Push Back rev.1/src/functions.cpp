@@ -17,7 +17,7 @@ void intakeUpperGoal() {
 
 void intakeHoard() {
     intakeFirst.move_velocity(1000);
-    intakeSecond.move_velocity(50);
+    intakeSecond.move_velocity(0);
 }
 
 void outtake() {

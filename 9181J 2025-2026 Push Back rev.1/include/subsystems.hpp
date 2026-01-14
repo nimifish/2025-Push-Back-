@@ -12,8 +12,8 @@ inline pros::Motor intakeFirst(20);
 inline pros::Motor intakeSecond(21);
 
 // // pneumatics
-// extern pros::ADIDigitalOut littleSirWilliam ('H', false);
-// extern pros::ADIDigitalOut descore_mech('C');
+pros::adi::DigitalOut littleSirWilliam('F');
+pros::adi::DigitalOut descore_mech('G');
 
 // // Sensors
 // inline pros::Optical color_sort(21);
@@ -29,6 +29,7 @@ void intakeUpperGoal();
 void intakeHoard();
 void intakeSorters();
 void outtake();
+void cut_intake();
 
 
 // tracking wheel
