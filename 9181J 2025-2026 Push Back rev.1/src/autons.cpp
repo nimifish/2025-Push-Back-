@@ -94,20 +94,19 @@ void soloAWP(){
   chassis.pid_turn_set(90_deg, 50); 
   chassis.pid_wait();
 
-  intakeHoard();
+  intakeUpperGoal();
   chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
   // pros::delay(80); // enough to get 3 blocks)
-  cut_intake();
-  chassis.pid_drive_set(-39_in, 90, true); 
-  intakeUpperGoal(); // LONG GOAL SCORING
+  chassis.pid_drive_set(-34_in, 90, true); 
   chassis.pid_wait();
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
   pros::delay(200);
 
   chassis.pid_drive_set(16_in, DRIVE_SPEED, true);
   chassis.pid_wait();
 
-  intakeHoard();
   littleSirWilliam.set_value(false);
 
   chassis.pid_turn_set(-135_deg, 100); 
@@ -115,40 +114,36 @@ void soloAWP(){
 
   chassis.pid_drive_set(30_in, DRIVE_SPEED, true);
   chassis.pid_wait();
-  cut_intake();
+  intakeHoard();
   littleSirWilliam.set_value(true);
 
-  chassis.pid_turn_set(180_deg, 100); 
+  chassis.pid_turn_set(175_deg, 100); 
   littleSirWilliam.set_value(false);
   chassis.pid_wait();
 
   intakeHoard();
-  chassis.pid_drive_set(47_in, 100, true);
+  chassis.pid_drive_set(52.5_in, 100, true);
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
-  cut_intake();
 
   chassis.pid_turn_set(135_deg, 100); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   intakeLowerGoal(); // MIDDLE GOAL SCORING
   pros::delay(700);
   intakeHoard();
+  intakeSecond.move_velocity(-1000);
   littleSirWilliam.set_value(false);
 
-  outtake();
-  chassis.pid_drive_set(51_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(49_in, DRIVE_SPEED, true);
   chassis.pid_wait();
-  cut_intake();
   chassis.pid_turn_set(90_deg, 100); 
   chassis.pid_wait();
-
+  intakeUpperGoal();
   chassis.pid_drive_set(-22_in, DRIVE_SPEED, true);
-
   chassis.pid_wait();
-
-  intakeUpperGoal(); // LONG GOAL SCORING
+   // LONG GOAL SCORING
   pros::delay(1500);
 }
 
