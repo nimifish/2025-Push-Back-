@@ -18,10 +18,12 @@ void odom_boomerang_injected_pure_pursuit_example();
 void measure_offsets();
 
 void elim_right();
+void elim_right_middle();
+void elim_right_all();
 void elim_left();
 void blue_autonomous_right();
 void blue_autonomous_left();
 void red_autonomous_right();
 void red_autonomous_left();
 void skills();
-void move_forward();
+void soloAWP();

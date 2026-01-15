@@ -7,14 +7,15 @@
 
 // Chassis constructor
 ez::Drive chassis(
-    {8, -5, -12},     // Left Chassis Ports (negative port reverse it)
-    {-7, 4, 13},  // Right Chassis Ports (negative port everse it)
+    {14, -17, -16},     // Left Chassis Ports (negative port reverse it)
+    {-6, 5, 15},  // Right Chassis Ports (negative port everse it)
 
 
-    2,      // IMU Port
+    18,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM
 
+  ez::tracking_wheel vert_tracker(1, 2.0, 4.0, 1.0);
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  */
@@ -33,10 +34,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"Autonomous Elim Right", elim_right_middle},
       {"Skills", skills},
-      {"Autonomous Right", blue_autonomous_right},
-      {"Autonomous Left", blue_autonomous_left},
-      {"Move Forward", move_forward}
+      {"Autonomous Left", elim_left}
   });
 
   // Initialize chassis and auton selector
@@ -201,10 +201,9 @@ void opcontrol() {
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   // pneumatics
-  pros::adi::DigitalOut littleSirWilliam('F');
-  pros::adi::DigitalOut descore_mech('G');
-  lwState = false;
-  dsState = false;
+  pros::adi::DigitalOut littleSirWilliam('A');
+  pros::adi::DigitalOut descore_mech('B');
+  pros::adi::DigitalOut hood('C');
 
   while (true) {
     // Gives you some extras to make EZ-Template easier
@@ -215,7 +214,7 @@ void opcontrol() {
 
     // LITTLE WILL
 
-    if (master.get_digital_new_press(DIGITAL_X)){ // L2 button toggle for little will
+    if (master.get_digital_new_press(DIGITAL_Y)){ // L2 button toggle for little will
       if (lwState == false){ // if the little will mechanism is not extended, activate the piston
         littleSirWilliam.set_value(true);
         lwState = true;}
@@ -227,13 +226,25 @@ void opcontrol() {
 
     // DESCORE MECHANISM
 
-    if (master.get_digital_new_press(DIGITAL_Y)){ // Y button toggle for descore mechanism
+    if (master.get_digital_new_press(DIGITAL_X)){ // Y button toggle for descore mechanism
       if (dsState == false){ // if descore mech is deactivated, activate it
         descore_mech.set_value(true);
         dsState = true;}
       else if (dsState == true){ // if descore mech is activated, deactivate it
         descore_mech.set_value(false);
         dsState = false;}
+      pros::delay(10); // in case of "double pressing"
+    }
+
+    // HOOD MECHANISM
+
+    if (master.get_digital_new_press(DIGITAL_RIGHT)){ // L2 button toggle for little will
+      if (hdState == false){ // if the little will mechanism is not extended, activate the piston
+        hood.set_value(true);
+        hdState = true;}
+      else if (hdState == true){ // if the little will mechanism is extended, deactivate the piston
+        hood.set_value(false);
+        hdState = false;}
       pros::delay(10); // in case of "double pressing"
     }
 
@@ -255,8 +266,8 @@ void opcontrol() {
     }
     
     else { //if no buttons are pressed i surely hope the motors arent spinning.
-      intake_group.move_velocity(0);
-      intakeFourth.move_velocity(0);
+      intakeFirst.move_velocity(0);
+      intakeSecond.move_velocity(0);
     }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
