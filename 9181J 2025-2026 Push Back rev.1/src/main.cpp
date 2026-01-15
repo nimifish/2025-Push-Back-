@@ -34,6 +34,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"soloawp", soloAWP},
       {"Autonomous Elim Right", elim_right_middle},
       {"Skills", skills},
       {"Autonomous Left", elim_left}
