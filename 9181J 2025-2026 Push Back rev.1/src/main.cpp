@@ -34,10 +34,12 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"soloawp", soloAWP},
-      {"Autonomous Elim Right", elim_right_middle},
-      {"Skills", skills},
-      {"Autonomous Left", elim_left}
+      {"SoloAWP (starts from right)", soloAWP_lower},
+      {"Elim Right 4 block + Middle bottom", elim_right_middle},
+      {"Elim Left Middle", elim_left_middle},
+      {"Elim Left 4 block", elim_left},
+      {"Elim Right 4 block", elim_right},
+      {"Skills (just position block below park zone)", skills},
   });
 
   // Initialize chassis and auton selector

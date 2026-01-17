@@ -15,7 +15,7 @@ const int SWING_SPEED = 110;
 ///
 void default_constants() {
   // P, I, D, and Start I
-  chassis.pid_drive_constants_set(20.0, 0.0, 80.0);         // Fwd/rev constants, used for odom and non odom motions
+  chassis.pid_drive_constants_set(20.0, 0.0, 82.0);         // Fwd/rev constants, used for odom and non odom motions
   chassis.pid_heading_constants_set(11.0, 0.0, 20.0);        // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.0, 0.05, 20.0, 15.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);           // Swing constants
@@ -52,99 +52,34 @@ void skills() {
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
   pros::adi::DigitalOut hood('C');
-  chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
+  // chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
 
-  intakeHoard();
-  pros::delay(400);
-  chassis.pid_drive_set(-20_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
+  // intakeHoard();
+  // pros::delay(400);
+  // chassis.pid_drive_set(-20_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
 
-  chassis.pid_turn_set(135_deg, 100); 
-  chassis.pid_wait();
+  // chassis.pid_turn_set(135_deg, 100); 
+  // chassis.pid_wait();
 
-  chassis.pid_drive_set(40_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
+  // chassis.pid_drive_set(40_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
 
-  cut_intake();
-  chassis.pid_drive_set(-7_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
+  // cut_intake();
+  // chassis.pid_drive_set(-7_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
 
-  chassis.pid_turn_set(45_deg, 100); 
-  chassis.pid_wait();
+  // chassis.pid_turn_set(45_deg, 100); 
+  // chassis.pid_wait();
 
-  chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  intakeLowerGoal();
-  pros::delay(200);
+  // chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
+  // chassis.pid_wait();
+  // intakeLowerGoal();
+  // pros::delay(200);
   intakeFirst.move_velocity(400);
   intakeSecond.move_velocity(400);
   pros::delay(200);
-
-}
-
-void soloAWP(){
-  pros::adi::DigitalOut littleSirWilliam('A');
-  pros::adi::DigitalOut descore_mech('B');
-  pros::adi::DigitalOut hood('C');
-  chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
-  chassis.pid_wait();
-  littleSirWilliam.set_value(true);
-  hood.set_value(true);
-  chassis.pid_turn_set(90_deg, 50); 
-  chassis.pid_wait();
-
-  intakeUpperGoal();
-  chassis.pid_drive_set(14_in, 60, true); 
-  chassis.pid_wait();
-  // pros::delay(80); // enough to get 3 blocks)
-  chassis.pid_drive_set(-34_in, 90, true); 
-  chassis.pid_wait();
-  intakeFirst.move_velocity(-100000);
-  intakeSecond.move_velocity(100000);
-  pros::delay(200);
-
-  chassis.pid_drive_set(16_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-
-  littleSirWilliam.set_value(false);
-
-  chassis.pid_turn_set(-135_deg, 100); 
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(30_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  intakeHoard();
-  littleSirWilliam.set_value(true);
-
-  chassis.pid_turn_set(175_deg, 100); 
-  littleSirWilliam.set_value(false);
-  chassis.pid_wait();
-
-  intakeHoard();
-  chassis.pid_drive_set(52.5_in, 100, true);
-  chassis.pid_wait();
-  littleSirWilliam.set_value(true);
-
-  chassis.pid_turn_set(135_deg, 100); 
-  chassis.pid_wait();
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  intakeLowerGoal(); // MIDDLE GOAL SCORING
-  pros::delay(700);
-  intakeHoard();
-  intakeSecond.move_velocity(-1000);
-  littleSirWilliam.set_value(false);
-
-  chassis.pid_drive_set(49_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 100); 
-  chassis.pid_wait();
-  intakeUpperGoal();
-  chassis.pid_drive_set(-22_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-   // LONG GOAL SCORING
-  pros::delay(1500);
 }
 
 void elim_right(){
@@ -155,19 +90,18 @@ void elim_right(){
   chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
-  hood.set_value(true);
   chassis.pid_turn_set(90_deg, 50); 
   chassis.pid_wait();
 
   intakeHoard();
-  chassis.pid_drive_set(14_in, 50, true); 
+  chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
-  pros::delay(200); // enough to get 3 blocks)
-  chassis.pid_drive_set(-45_in, 50, true); 
+  // pros::delay(80); // enough to get 3 blocks)
+  hood.set_value(true);
+  chassis.pid_drive_set(-34_in, 110, true); 
   chassis.pid_wait();
-  outtake();
-  pros::delay(100);
-  intakeUpperGoal();
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
   pros::delay(1000); // (enough to score 4 blocks)
   chassis.pid_drive_set(8_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
@@ -190,40 +124,39 @@ void elim_right_middle(){
   chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
-  hood.set_value(true);
   chassis.pid_turn_set(90_deg, 50); 
   chassis.pid_wait();
 
   intakeHoard();
-  chassis.pid_drive_set(14_in, 50, true); 
+  chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
-  pros::delay(150); // enough to get 3 blocks)
-  chassis.pid_drive_set(-43_in, 60, true); 
+  // pros::delay(80); // enough to get 3 blocks)
+  hood.set_value(true);
+  chassis.pid_drive_set(-34_in, 110, true); 
   chassis.pid_wait();
-  outtake();
-  pros::delay(100);
-  intakeUpperGoal();
-  pros::delay(1100); // (enough to score 4 blocks)
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
+  pros::delay(1000); // (enough to score 4 blocks)
   chassis.pid_drive_set(8_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   littleSirWilliam.set_value(false);
   cut_intake();
   chassis.pid_turn_set(0_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-13_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(-135_deg, 50); 
   chassis.pid_wait();
-  intakeFirst.move_velocity(1000);
-  chassis.pid_drive_set(25_in, 70, true); 
-  chassis.pid_wait();
   intakeFirst.move_velocity(-1000);
-  pros::delay(1000); // enough to score 3 blocks
-  chassis.pid_drive_set(-30_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(30.5_in, 70, true); 
+  chassis.pid_wait();
+  intakeFirst.move_velocity(1000);
+  pros::delay(1100); // enough to score 3 blocks
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(46_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(30_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
 }
 
@@ -237,22 +170,22 @@ void elim_left(){
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
   pros::adi::DigitalOut hood('C');
-  chassis.pid_drive_set(35_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
+  littleSirWilliam.set_value(true);
   chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
 
   intakeHoard();
-  littleSirWilliam.set_value(true);
-  chassis.pid_drive_set(10_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
-
-  pros::delay(200);
-
-  chassis.pid_drive_set(-45_in, DRIVE_SPEED, true); 
+  // pros::delay(80); // enough to get 3 blocks)
+  hood.set_value(true);
+  chassis.pid_drive_set(-34_in, 110, true); 
   chassis.pid_wait();
-  intakeUpperGoal();
-  pros::delay(200);
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
+  pros::delay(1000); // (enough to score 4 blocks)
   littleSirWilliam.set_value(false);
 
   chassis.pid_drive_set(8_in, DRIVE_SPEED, true); 
@@ -260,15 +193,61 @@ void elim_left(){
   cut_intake();
   chassis.pid_turn_set(0_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(8_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-9.5_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 50); 
+  chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
 
-  descore_mech.set_value(true);
-
-  chassis.pid_drive_set(15_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-23_in, 40, true); 
   chassis.pid_wait();
+}
+
+void elim_left_middle(){
+  pros::adi::DigitalOut littleSirWilliam('A');
+  pros::adi::DigitalOut descore_mech('B');
+  pros::adi::DigitalOut hood('C');
+  chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+  chassis.pid_turn_set(-90_deg, 50); 
+  chassis.pid_wait();
+
+  intakeHoard();
+  chassis.pid_drive_set(14_in, 60, true); 
+  chassis.pid_wait();
+  // pros::delay(80); // enough to get 3 blocks)
+  hood.set_value(true);
+  chassis.pid_drive_set(-34_in, 110, true); 
+  chassis.pid_wait();
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
+  pros::delay(800); // (enough to score 4 blocks)
+  littleSirWilliam.set_value(false);
+
+  chassis.pid_drive_set(20_in, 110, true); 
+  chassis.pid_wait();
+  chassis.pid_turn_set(135_deg, 80); 
+  chassis.pid_wait();
+  intakeHoard();
+  chassis.pid_drive_set(40_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+  chassis.pid_turn_set(-44_deg, 50); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(-12_in, 110, true); 
+  chassis.pid_wait();
+  outtake();
+  pros::delay(200);
+  intakeLowerGoal();
+  pros::delay(1200);
+  chassis.pid_drive_set(33_in, 110, true); 
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, 50); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(-33_in, 50, true); 
+  chassis.pid_wait();
+}
+void elim_left_all(){
+
 }
 
 void blue_autonomous_right() {
@@ -462,3 +441,139 @@ void blue_autonomous_left() {
   pros::delay(1400);
   cut_intake();
 }
+
+void soloAWP_lower() {
+  pros::adi::DigitalOut littleSirWilliam('A');
+  pros::adi::DigitalOut descore_mech('B');
+  pros::adi::DigitalOut hood('C');
+  chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+  chassis.pid_turn_set(90_deg, 80); 
+  chassis.pid_wait();
+
+  intakeUpperGoal();
+  chassis.pid_drive_set(14_in, 60, true); 
+  chassis.pid_wait();
+  // pros::delay(80); // enough to get 3 blocks)
+  hood.set_value(true);
+  chassis.pid_drive_set(-34_in, 110, true); 
+  chassis.pid_wait();
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000);
+  pros::delay(600);
+
+  chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  littleSirWilliam.set_value(false);
+
+  chassis.pid_turn_set(-135_deg, 100); 
+  chassis.pid_wait();
+  intakeFirst.move_velocity(-10000);
+  intakeSecond.move_velocity(0);
+
+  chassis.pid_drive_set(50_in, 90, true);
+  chassis.pid_wait();
+  
+  intakeFirst.move_velocity(10000);
+  pros::delay(400);
+
+  chassis.pid_drive_set(-5_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(170_deg, 100); 
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+
+  intakeHoard();
+  chassis.pid_drive_set(45_in, 80, true);
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+
+  chassis.pid_turn_set(140_deg, 100); 
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(25.5_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  intakeHoard();
+  hood.set_value(true);
+  chassis.pid_turn_set(90_deg, 100); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(-14_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  intakeFirst.move_velocity(-100000);
+  intakeSecond.move_velocity(100000); // LONG GOAL SCORING
+  pros::delay(1500);
+}
+
+// void soloAWP(){
+//   pros::adi::DigitalOut littleSirWilliam('A');
+//   pros::adi::DigitalOut descore_mech('B');
+//   pros::adi::DigitalOut hood('C');
+//   chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
+//   chassis.pid_wait();
+//   littleSirWilliam.set_value(true);
+//   chassis.pid_turn_set(90_deg, 50); 
+//   chassis.pid_wait();
+
+//   intakeUpperGoal();
+//   chassis.pid_drive_set(14_in, 60, true); 
+//   chassis.pid_wait();
+//   // pros::delay(80); // enough to get 3 blocks)
+//   hood.set_value(true);
+//   chassis.pid_drive_set(-34_in, 110, true); 
+//   chassis.pid_wait();
+//   intakeFirst.move_velocity(-100000);
+//   intakeSecond.move_velocity(100000);
+//   pros::delay(200);
+
+//   chassis.pid_drive_set(16_in, DRIVE_SPEED, true);
+//   chassis.pid_wait();
+
+//   littleSirWilliam.set_value(false);
+
+//   chassis.pid_turn_set(-135_deg, 100); 
+//   chassis.pid_wait();
+
+//   chassis.pid_drive_set(30_in, DRIVE_SPEED, true);
+//   chassis.pid_wait();
+//   hood.set_value(false);
+//   intakeHoard();
+//   littleSirWilliam.set_value(true);
+
+//   chassis.pid_turn_set(175_deg, 100); 
+//   chassis.pid_wait();
+//   littleSirWilliam.set_value(false);
+
+//   intakeHoard();
+//   intakeFirst.move_velocity(-5000);
+//   chassis.pid_drive_set(52.5_in, 100, true);
+//   chassis.pid_wait();
+//   littleSirWilliam.set_value(true);
+
+//   chassis.pid_turn_set(138_deg, 100); 
+//   chassis.pid_wait();
+//   intakeFirst.move_velocity(-5000);
+//   intakeSecond.move_velocity(200); // MIDDLE GOAL SCORING
+//   chassis.pid_drive_set(-22_in, DRIVE_SPEED, true);
+//   chassis.pid_wait();
+//   intakeFirst.move_velocity(-5000);
+//   intakeSecond.move_velocity(1000);
+//   pros::delay(100);
+//   intakeFirst.move_velocity(100);
+//   intakeSecond.move_velocity(-100);
+//   littleSirWilliam.set_value(false);
+
+//   chassis.pid_drive_set(46_in, DRIVE_SPEED, true);
+//   chassis.pid_wait();
+//   intakeHoard();
+//   hood.set_value(true);
+//   chassis.pid_turn_set(90_deg, 100); 
+//   chassis.pid_wait();
+//   chassis.pid_drive_set(-16_in, DRIVE_SPEED, true);
+//   chassis.pid_wait();
+//   intakeFirst.move_velocity(-100000);
+//   intakeSecond.move_velocity(100000); // LONG GOAL SCORING
+//   pros::delay(1500);
+// }

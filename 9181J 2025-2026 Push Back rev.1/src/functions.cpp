@@ -8,7 +8,7 @@ std::string teamcolor = "Red"; //need a way to change this
 
 void intakeLowerGoal() {
     intakeFirst.move_velocity(-1000);
-    intakeSecond.move_velocity(-1000);
+    intakeSecond.move_velocity(-500);
 }
 
 void intakeUpperGoal() {
