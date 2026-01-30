@@ -52,34 +52,57 @@ void skills() {
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
   pros::adi::DigitalOut hood('C');
-  // chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // intakeHoard();
-  // pros::delay(400);
-  // chassis.pid_drive_set(-20_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(135_deg, 100); 
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(40_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // cut_intake();
-  // chassis.pid_drive_set(-7_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-
-  // chassis.pid_turn_set(45_deg, 100); 
-  // chassis.pid_wait();
-
-  // chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
-  // chassis.pid_wait();
-  // intakeLowerGoal();
-  // pros::delay(200);
-  intakeFirst.move_velocity(400);
-  intakeSecond.move_velocity(400);
-  pros::delay(200);
+  // Goes to the LEFT loader first
+  chassis.pid_drive_set(32_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  // Activates little will and moves to matchloader
+  littleSirWilliam.set_value(true);
+  intakeHoard();
+  chassis.pid_turn_set(-90_deg, 50); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(14_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  pros::delay(1000); // wait enough to Matchload ALL Blocks
+  // Moves backwards and moves across the field
+  chassis.pid_drive_set(-14_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, 50); 
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+  chassis.pid_drive_set(18_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 50); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(86_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(135_deg, 50); 
+  chassis.pid_wait();
+  chassis.pid_drive_set(16_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  // Turn and then score on long goal
+  chassis.pid_turn_set(90_deg, 50); 
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+  chassis.pid_drive_set(-29_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  intakeUpperGoal();
+  pros::delay(1000); // wait enough to score ALL Blocks
+  chassis.pid_drive_set(43_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  pros::delay(1000); // wait enough to matchload ALL Blocks
+  chassis.pid_drive_set(-43_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  pros::delay(1000); // wait enough to score ALL Blocks
+  chassis.pid_drive_set(16_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, 50);
+  chassis.pid_wait();
+  chassis.pid_drive_set(94_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 50);
+  chassis.pid_wait();
+  chassis.pid_drive_set(94_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
 }
 
 void elim_right(){
