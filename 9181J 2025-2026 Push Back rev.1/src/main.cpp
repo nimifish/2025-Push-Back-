@@ -7,13 +7,14 @@
 
 // Chassis constructor
 ez::Drive chassis(
-    {14, -17, -16},     // Left Chassis Ports (negative port reverse it)
-    {-6, 5, 15},  // Right Chassis Ports (negative port everse it)
+    {14, -7, -16},     // Left Chassis Ports (negative port reverse it)
+    {-6, 17, 15},  // Right Chassis Ports (negative port everse it)
 
 
     18,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM
+
 
   ez::tracking_wheel vert_tracker(1, 2.0, 4.0, 1.0);
 /**
@@ -34,12 +35,12 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"Skills (just position block below park zone)", skills},
       {"SoloAWP (starts from right)", soloAWP_lower},
       {"Elim Right 4 block + Middle bottom", elim_right_middle},
       {"Elim Left Middle", elim_left_middle},
       {"Elim Left 4 block", elim_left},
-      {"Elim Right 4 block", elim_right},
-      {"Skills (just position block below park zone)", skills},
+      {"Elim Right 4 block", elim_right}
   });
 
   // Initialize chassis and auton selector
