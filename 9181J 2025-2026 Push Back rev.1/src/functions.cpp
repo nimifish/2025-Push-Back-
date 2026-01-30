@@ -8,27 +8,32 @@ std::string teamcolor = "Red"; //need a way to change this
 
 void intakeLowerGoal() {
     intakeFirst.move_velocity(-1000);
-    intakeSecond.move_velocity(-500);
+    intakeSecond.move_velocity(-1000);
+    intakeThird.move_velocity(500);
 }
 
 void intakeUpperGoal() {
     intakeFirst.move_velocity(-1000);
-    intakeSecond.move_velocity(1000);
+    intakeSecond.move_velocity(-1000);
+    intakeThird.move_velocity(-1000);
 }
 
 void intakeHoard() {
     intakeFirst.move_velocity(-1000);
-    intakeSecond.move_velocity(0);
+    intakeSecond.move_velocity(-61  );
+    intakeThird.move_velocity(0);
 }
 
 void outtake() {
     intakeFirst.move_velocity(1000);
-    intakeSecond.move_velocity(-1000);
+    intakeSecond.move_velocity(1000);
+    intakeThird.move_velocity(-1000);
 }
 
 void cut_intake() {
     intakeFirst.move_velocity(0);
     intakeSecond.move_velocity(0);
+    intakeThird.move_velocity(0);
 }
 
 // void intakeSorter() {

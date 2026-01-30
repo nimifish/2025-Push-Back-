@@ -7,7 +7,7 @@
 
 // Chassis constructor
 ez::Drive chassis(
-    {14, -7, -16},     // Left Chassis Ports (negative port reverse it)
+    {14, -12, -16},     // Left Chassis Ports (negative port reverse it) port 12 one is screwey..
     {-6, 17, 15},  // Right Chassis Ports (negative port everse it)
 
 
@@ -270,8 +270,7 @@ void opcontrol() {
     }
     
     else { //if no buttons are pressed i surely hope the motors arent spinning.
-      intakeFirst.move_velocity(0);
-      intakeSecond.move_velocity(0);
+      cut_intake();
     }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

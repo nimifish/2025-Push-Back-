@@ -6,10 +6,11 @@
 
 
 extern Drive chassis;
-
+    
 // intakes
 inline pros::Motor intakeFirst(20);
 inline pros::Motor intakeSecond(21);
+inline pros::Motor intakeThird(8);
 
 // // Sensors
 // inline pros::Optical color_sort(21);
