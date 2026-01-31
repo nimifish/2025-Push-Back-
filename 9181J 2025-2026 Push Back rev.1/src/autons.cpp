@@ -60,7 +60,7 @@ void skills() {
   intakeHoard();
   chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(14.3_in, 70, true);
+  chassis.pid_drive_set(14.3_in, 60, true);
   chassis.pid_wait();
   pros::delay(1000); // wait enough to Matchload ALL Blocks
   // Moves backwards and moves across the field
@@ -93,7 +93,7 @@ void skills() {
   chassis.pid_drive_set(38_in, 60, true);
   chassis.pid_wait();
   pros::delay(1200); // wait enough to matchload ALL Blocks
-  chassis.pid_drive_set(-34_in, 90, true);
+  chassis.pid_drive_set(-32_in, 70, true);
   chassis.pid_wait();
   outtake();
   pros::delay(100);
@@ -102,14 +102,14 @@ void skills() {
   chassis.pid_drive_set(14_in, DRIVE_SPEED, true);
   littleSirWilliam.set_value(false);
   chassis.pid_wait();
-  chassis.pid_turn_set(179_deg, 50);
+  chassis.pid_turn_set(178.5_deg, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(94.5_in, DRIVE_SPEED, true); // ACROSS THE FIELDDDDD
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
-  chassis.pid_turn_set(89.7_deg, 50);
+  chassis.pid_turn_set(89.7_deg, 40);
   chassis.pid_wait();
-  chassis.pid_drive_set(20_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(20.5_in, 70, true);
   chassis.pid_wait();
   intakeHoard();
   pros::delay(1000); // wait enough to Matchload ALL Blocks
@@ -155,16 +155,11 @@ void skills() {
   littleSirWilliam.set_value(false);
   chassis.pid_turn_set(180_deg, 70); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-43_in, DRIVE_SPEED, true);
   chassis.pid_wait();
-  descore_mech.set_value(true);
   chassis.pid_turn_set(90_deg, 70); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-14.4_in, 60, true);
-  chassis.pid_wait();
-  chassis.pid_turn_set(185_deg, 70); 
-  chassis.pid_wait();
-  chassis.pid_drive_set(-30_in, 90, true);
+  chassis.pid_drive_set(-15_in, 80, true);
   chassis.pid_wait();
 }
 
