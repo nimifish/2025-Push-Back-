@@ -16,7 +16,7 @@ ez::Drive chassis(
     450);   // Wheel RPM
 
 
-  ez::tracking_wheel vert_tracker(1, 2.0, 4.0, 1.0);
+  ez::tracking_wheel vert_tracker(2, 2.0, 4.0, 1.0);
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  */
@@ -35,8 +35,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Skills (just position block below park zone)", skills},
       {"SoloAWP (starts from right)", soloAWP_lower},
+      {"Skills (just position block below park zone)", skills},
       {"Elim Right 4 block + Middle bottom", elim_right_middle},
       {"Elim Left Middle", elim_left_middle},
       {"Elim Left 4 block", elim_left},
