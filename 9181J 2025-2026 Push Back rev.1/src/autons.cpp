@@ -15,7 +15,7 @@ const int SWING_SPEED = 110;
 ///
 void default_constants() {
   // P, I, D, and Start I
-  chassis.pid_drive_constants_set(18, 0.0, 82.0);         // Fwd/rev constants, used for odom and non odom motions
+  chassis.pid_drive_constants_set(17.5, 0.0, 82.0);         // Fwd/rev constants, used for odom and non odom motions
   chassis.pid_heading_constants_set(11.0, 0.0, 20.0);        // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.0, 0.05, 20.0, 15.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);           // Swing constants
@@ -62,7 +62,7 @@ void skills() {
   chassis.pid_wait();
   chassis.pid_drive_set(14.3_in, 60, true);
   chassis.pid_wait();
-  pros::delay(1000); // wait enough to Matchload ALL Blocks
+  pros::delay(1200); // wait enough to Matchload ALL Blocks
   // Moves backwards and moves across the field
   chassis.pid_drive_set(-14_in, DRIVE_SPEED, true);
   chassis.pid_wait();
@@ -88,17 +88,17 @@ void skills() {
   pros::delay(100);
   intakeUpperGoal();
   littleSirWilliam.set_value(true);
-  pros::delay(1700); // wait enough to score ALL Blocks
+  pros::delay(2000); // wait enough to score ALL Blocks
   intakeHoard();
   chassis.pid_drive_set(38_in, 60, true);
   chassis.pid_wait();
-  pros::delay(1200); // wait enough to matchload ALL Blocks
+  pros::delay(1700); // wait enough to matchload ALL Blocks
   chassis.pid_drive_set(-32_in, 70, true);
   chassis.pid_wait();
   outtake();
   pros::delay(100);
   intakeUpperGoal();
-  pros::delay(1600); // wait enough to score ALL Blocks
+  pros::delay(1800); // wait enough to score ALL Blocks
   chassis.pid_drive_set(14_in, DRIVE_SPEED, true);
   littleSirWilliam.set_value(false);
   chassis.pid_wait();
@@ -112,7 +112,7 @@ void skills() {
   chassis.pid_drive_set(20.5_in, 70, true);
   chassis.pid_wait();
   intakeHoard();
-  pros::delay(1000); // wait enough to Matchload ALL Blocks
+  pros::delay(1200); // wait enough to Matchload ALL Blocks
   // Moves backwards and moves across the field
   chassis.pid_drive_set(-14_in, DRIVE_SPEED, true);
   chassis.pid_wait();
@@ -139,7 +139,7 @@ void skills() {
   pros::delay(100);
   intakeUpperGoal();
   littleSirWilliam.set_value(true);
-  pros::delay(1500); // wait enough to score ALL Blocks
+  pros::delay(1800); // wait enough to score ALL Blocks
   intakeHoard();
   chassis.pid_drive_set(38_in, 60, true);
   chassis.pid_wait();
@@ -149,8 +149,8 @@ void skills() {
   outtake();
   pros::delay(100);
   intakeUpperGoal();
-  pros::delay(1600); // wait enough to score ALL Blocks
-  chassis.pid_drive_set(18_in, DRIVE_SPEED, true);
+  pros::delay(1800); // wait enough to score ALL Blocks
+  chassis.pid_drive_set(12_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   littleSirWilliam.set_value(false);
   chassis.pid_turn_set(180_deg, 70); 
@@ -159,7 +159,7 @@ void skills() {
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 70); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-15_in, 80, true);
+  chassis.pid_drive_set(-45_in, 80, true);
   chassis.pid_wait();
 }
 
