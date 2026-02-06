@@ -207,7 +207,7 @@ void opcontrol() {
   // pneumatics
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
-  pros::adi::DigitalOut hood('C');
+  // pros::adi::DigitalOut hood('C');
 
   while (true) {
     // Gives you some extras to make EZ-Template easier
@@ -242,15 +242,15 @@ void opcontrol() {
 
     // HOOD MECHANISM
 
-    if (master.get_digital_new_press(DIGITAL_RIGHT)){ // L2 button toggle for little will
-      if (hdState == false){ // if the little will mechanism is not extended, activate the piston
-        hood.set_value(true);
-        hdState = true;}
-      else if (hdState == true){ // if the little will mechanism is extended, deactivate the piston
-        hood.set_value(false);
-        hdState = false;}
-      pros::delay(10); // in case of "double pressing"
-    }
+    // if (master.get_digital_new_press(DIGITAL_RIGHT)){ // L2 button toggle for little will
+    //   if (hdState == false){ // if the little will mechanism is not extended, activate the piston
+    //     hood.set_value(true);
+    //     hdState = true;}
+    //   else if (hdState == true){ // if the little will mechanism is extended, deactivate the piston
+    //     hood.set_value(false);
+    //     hdState = false;}
+    //   pros::delay(10); // in case of "double pressing"
+    // }
 
     // INTAKE
 
