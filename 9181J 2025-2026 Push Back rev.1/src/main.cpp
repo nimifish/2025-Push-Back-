@@ -207,7 +207,7 @@ void opcontrol() {
   // pneumatics
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
-  // pros::adi::DigitalOut hood('C');
+  pros::adi::DigitalOut intakepiston('C');
 
   while (true) {
     // Gives you some extras to make EZ-Template easier
@@ -255,6 +255,7 @@ void opcontrol() {
     // INTAKE
 
     if (master.get_digital(DIGITAL_R2)){ //outtake
+      intakepiston.set_value(true);
       outtake();}
     
     else if (master.get_digital(DIGITAL_R1)){ //intake
@@ -270,6 +271,7 @@ void opcontrol() {
     }
     
     else { //if no buttons are pressed i surely hope the motors arent spinning.
+      intakepiston.set_value(false);
       cut_intake();
     }
 
