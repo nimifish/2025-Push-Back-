@@ -25,6 +25,7 @@ extern bool hdState;
 void intakeLowerGoal();
 void intakeUpperGoal();
 void intakeHoard();
+void intakeDebug();
 void intakeSorters();
 void outtake();
 void cut_intake();
