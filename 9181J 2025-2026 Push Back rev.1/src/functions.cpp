@@ -37,7 +37,7 @@ void intakeDebug() {
 void outtake() {
     intakeFirst.move_velocity(1000);
     intakeSecond.move_velocity(1000);
-    intakeThird.move_velocity(-1000);
+    intakeThird.move_velocity(1000);
 }
 
 void cut_intake() {
