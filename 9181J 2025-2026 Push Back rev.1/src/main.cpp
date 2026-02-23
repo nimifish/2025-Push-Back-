@@ -261,7 +261,7 @@ void opcontrol() {
     else if (master.get_digital(DIGITAL_R1)){ //intake
 
       if (master.get_digital(DIGITAL_L2)){ //4th intake switch lowergoal
-        intakeLowerGoal();}
+        intakeLowerGoalMatch();}
 
       else if (master.get_digital(DIGITAL_L1)){ // hold button to hoard
         intakeUpperGoal();} // hoard intake
