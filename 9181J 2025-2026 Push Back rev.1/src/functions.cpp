@@ -6,7 +6,7 @@ bool dsState = false;
 bool hdState = false;
 std::string teamcolor = "Red"; //need a way to change this
 
-void intakeLowerGoal() {
+void intakeLowerGoalSkills() {
     intakeFirst.move_velocity(-1000);
     intakeSecond.move_velocity(-1000);
     intakeThird.move_velocity(67);
