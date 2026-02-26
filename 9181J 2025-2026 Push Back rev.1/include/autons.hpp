@@ -28,5 +28,6 @@ void blue_autonomous_left();
 void red_autonomous_right();
 void red_autonomous_left();
 void skills();
+void skillsSeventy();
 void soloAWP();
 void soloAWP_lower();
