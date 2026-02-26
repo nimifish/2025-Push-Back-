@@ -136,6 +136,7 @@ void skills() {
   chassis.pid_wait();
   chassis.pid_drive_set(40_in, 80, true); 
   chassis.pid_wait();
+  chassis.odom_reset(); // reset
   // chassis.pid_turn_set(45_deg, 50);
   // chassis.pid_wait();
   // chassis.pid_drive_set(27_in, DRIVE_SPEED, true); 
@@ -157,7 +158,7 @@ void skills() {
   chassis.pid_drive_set(-45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   intakeDebug();
-  intakeLowerGoal();
+  intakeLowerGoalSkills();
   pros::delay(800);
   chassis.pid_drive_set(45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
@@ -395,7 +396,7 @@ void elim_left_middle(){
   chassis.pid_wait();
   outtake();
   pros::delay(200);
-  intakeLowerGoal();
+  intakeLowerGoalSkills();
   pros::delay(1200);
   chassis.pid_drive_set(33_in, 110, true); 
   chassis.pid_wait();
@@ -768,12 +769,13 @@ void skillsSeventy() {
   chassis.pid_wait();
   chassis.pid_drive_set(-18_in, DRIVE_SPEED, true);
   chassis.pid_wait();
-  chassis.pid_turn_set(-180_deg, 50); 
+  chassis.pid_turn_set(-179.7_deg, 50); 
   chassis.pid_wait();
-  // descore_mech.set_value(true);
+  descore_mech.set_value(true);
   chassis.pid_drive_set(-86_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   descore_mech.set_value(false);
+  chassis.odom_reset();
   chassis.pid_turn_set(-45_deg, 50); 
   chassis.pid_wait();
   chassis.pid_drive_set(-15_in, DRIVE_SPEED, true);
@@ -825,6 +827,7 @@ void skillsSeventy() {
   chassis.pid_drive_set(-86_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   descore_mech.set_value(false);
+  chassis.odom_reset();
   chassis.pid_turn_set(-45_deg, 50); 
   chassis.pid_wait();
   chassis.pid_drive_set(-16_in, DRIVE_SPEED, true);
@@ -857,6 +860,7 @@ void skillsSeventy() {
   chassis.pid_wait();
   chassis.pid_turn_set(180_deg, 70); 
   chassis.pid_wait();
+  descore_mech.set_value(true);
   chassis.pid_drive_set(45_in, 80, true);
   chassis.pid_wait();
 }

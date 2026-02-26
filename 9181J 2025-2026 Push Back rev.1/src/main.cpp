@@ -1,4 +1,5 @@
 #include "main.h"
+#include <cmath>
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -173,6 +174,12 @@ void ez_template_extras() {
       pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
       autonomous();
       chassis.drive_brake_set(preference);
+    }
+
+    if (master.get_digital(DIGITAL_A) && master.get_digital(DIGITAL_LEFT)) {
+      pros::lcd::print(4, "theta: %f", std::round(float (chassis.odom_theta_get())));
+      pros::lcd::print(5, "x: %f", std::round(float (chassis.odom_x_get())));
+      pros::lcd::print(6, "y: %f", std::round(float (chassis.odom_y_get())));
     }
 
     // Allow PID Tuner to iterate

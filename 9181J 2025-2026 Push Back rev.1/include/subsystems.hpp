@@ -22,7 +22,8 @@ extern bool lwState;
 extern bool dsState;
 extern bool hdState;
 
-void intakeLowerGoal();
+void intakeLowerGoalSkills();
+void intakeLowerGoalMatch();
 void intakeUpperGoal();
 void intakeHoard();
 void intakeDebug();
