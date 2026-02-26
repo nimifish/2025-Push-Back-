@@ -136,7 +136,6 @@ void skills() {
   chassis.pid_wait();
   chassis.pid_drive_set(40_in, 80, true); 
   chassis.pid_wait();
-  chassis.odom_reset(); // reset
   // chassis.pid_turn_set(45_deg, 50);
   // chassis.pid_wait();
   // chassis.pid_drive_set(27_in, DRIVE_SPEED, true); 
@@ -158,7 +157,7 @@ void skills() {
   chassis.pid_drive_set(-45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   intakeDebug();
-  intakeLowerGoalSkills();
+  intakeLowerGoal();
   pros::delay(800);
   chassis.pid_drive_set(45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
@@ -282,7 +281,7 @@ void elim_right(){
 void elim_right_middle(){
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
-  pros::adi::DigitalOut hood('C');
+  pros::adi::DigitalOut intakepiston('C');
   chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
@@ -293,7 +292,6 @@ void elim_right_middle(){
   chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
   // pros::delay(80); // enough to get 3 blocks)
-  hood.set_value(true);
   chassis.pid_drive_set(-34_in, 110, true); 
   chassis.pid_wait();
   intakeUpperGoal();
@@ -311,6 +309,7 @@ void elim_right_middle(){
   intakeHoard();
   chassis.pid_drive_set(30.5_in, 70, true); 
   chassis.pid_wait();
+  intakepiston.set_value(true);
   outtake();
   pros::delay(1100); // enough to score 3 blocks
   chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); 
@@ -396,7 +395,7 @@ void elim_left_middle(){
   chassis.pid_wait();
   outtake();
   pros::delay(200);
-  intakeLowerGoalSkills();
+  intakeLowerGoal();
   pros::delay(1200);
   chassis.pid_drive_set(33_in, 110, true); 
   chassis.pid_wait();
@@ -604,7 +603,7 @@ void blue_autonomous_left() {
 void soloAWP_lower() {
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
-  pros::adi::DigitalOut hood('C');
+  pros::adi::DigitalOut intakepiston('C');
   chassis.pid_drive_set(32_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   littleSirWilliam.set_value(true);
@@ -612,51 +611,64 @@ void soloAWP_lower() {
   chassis.pid_wait();
 
   intakeHoard();
-  chassis.pid_drive_set(14_in, 60, true); 
+  chassis.pid_drive_set(14_in, 80, true); 
   chassis.pid_wait();
+  intakeUpperGoal();
   // pros::delay(80); // enough to get 3 blocks)
   chassis.pid_drive_set(-32_in, 110, true); 
   chassis.pid_wait();
-  intakeUpperGoal();
-  pros::delay(600);
+  pros::delay(200);
 
-  chassis.pid_drive_set(21_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(21_in, 70, true);
   chassis.pid_wait();
 
   littleSirWilliam.set_value(false);
 
-  chassis.pid_turn_set(-135_deg, 100); 
+  chassis.pid_turn_set(-161_deg, 100); 
   chassis.pid_wait();
   intakeHoard();
 
-  chassis.pid_drive_set(50_in, 90, true);
+  chassis.pid_drive_set(76_in, 90, true);
   chassis.pid_wait();
+
+  // intakepiston.set_value(true);
+  // outtake();
+  // pros::delay(400);
+
+  // chassis.pid_drive_set(-5_in, 90, true);
+  // chassis.pid_wait();
+
+  // chassis.pid_turn_set(170_deg, 100); 
+  // chassis.pid_wait();
+  // littleSirWilliam.set_value(false);
+
+  // intakeHoard();
+  // chassis.pid_drive_set(45_in, 120, true);
+  // chassis.pid_wait();
+  // littleSirWilliam.set_value(true);
+
+  chassis.pid_turn_set(135_deg, 100); 
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  intakeLowerGoalMatch();
+  pros::delay(1000);
+
+  chassis.pid_drive_set(45_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+  intakeHoard();
   
-  outtake();
-  pros::delay(400);
-
-  chassis.pid_drive_set(-5_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-
-  chassis.pid_turn_set(170_deg, 100); 
-  chassis.pid_wait();
-  littleSirWilliam.set_value(false);
-
-  intakeHoard();
-  chassis.pid_drive_set(45_in, 80, true);
-  chassis.pid_wait();
   littleSirWilliam.set_value(true);
 
-  chassis.pid_turn_set(140_deg, 100); 
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(25.5_in, DRIVE_SPEED, true);
-  chassis.pid_wait();
-  intakeHoard();
-  hood.set_value(true);
   chassis.pid_turn_set(90_deg, 100); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-14_in, DRIVE_SPEED, true);
+
+  chassis.pid_drive_set(20_in, 70, true);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED, true);
   chassis.pid_wait();
   intakeUpperGoal(); // LONG GOAL SCORING
   pros::delay(1500);
