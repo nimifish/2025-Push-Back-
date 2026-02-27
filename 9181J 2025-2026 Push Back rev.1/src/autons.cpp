@@ -52,6 +52,136 @@ void skills() {
   pros::adi::DigitalOut littleSirWilliam('A');
   pros::adi::DigitalOut descore_mech('B');
   descore_mech.set_value(false);
+  chassis.odom_xyt_set(0_in, 0_in, 90_deg);
+
+  intakeHoard();
+  chassis.pid_odom_set({{30_in, 0_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({40.5_in, -9_in}, rev, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{40.5_in, -9_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  outtake();
+  pros::delay(200);
+  intakeLowerGoalSkills(); // score middle goal
+  pros::delay(2000);
+  intakeHoard();
+  chassis.pid_turn_set({25_in, 5_in}, fwd, TURN_SPEED);
+  chassis.pid_odom_set({{25_in, 5_in}, fwd, DRIVE_SPEED});
+  chassis.pid_turn_set({10_in, 25_in}, fwd, TURN_SPEED);
+  chassis.pid_odom_set({{10_in, 25_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+  chassis.pid_turn_set({-13_in, 25_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-13_in, 25_in}, fwd, 40}); // first match loader
+  chassis.pid_wait();
+  pros::delay(1000);
+  chassis.pid_odom_set({{6_in, 25_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+  chassis.pid_turn_set({10_in, 37_in}, rev, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{10_in, 37_in}, rev, DRIVE_SPEED}); // go from side
+  chassis.pid_wait();
+  chassis.pid_turn_set({88_in, 37_in}, rev, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{88_in, 37_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({100_in, 24_in}, rev, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{100_in, 24_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({81_in, 24_in}, rev, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{81_in, 24_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  intakeUpperGoal();
+  pros::delay(2000);
+  intakeHoard();
+  littleSirWilliam.set_value(true);
+  chassis.pid_odom_set({{113_in, 24_in}, fwd, 40});
+  chassis.pid_wait();
+  pros::delay(1000);
+  chassis.pid_odom_set({{83_in, 24_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+  intakeUpperGoal();
+  pros::delay(2000);
+  intakeHoard();
+  chassis.pid_odom_set({{100_in, 24_in}, fwd, DRIVE_SPEED}); // between matchloader and long goal
+  chassis.pid_wait();
+  chassis.pid_turn_set({102_in, -70_in}, fwd, TURN_SPEED); 
+  chassis.pid_wait();
+  cut_intake();
+  chassis.pid_odom_set({{102_in, -70_in}, fwd, DRIVE_SPEED}); // across the field
+  chassis.pid_wait();
+  chassis.pid_turn_set({117_in, -70_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  littleSirWilliam.set_value(true);
+  chassis.pid_odom_set({{117_in, -70_in}, fwd, 40});
+  chassis.pid_wait();
+  intakeHoard();
+  pros::delay(1000);
+  chassis.pid_odom_set({{102_in, -70_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+  chassis.pid_turn_set({87_in, -83_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{83.5_in, -83_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({25.5_in, -83_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{25.5_in, -83_in}, fwd, DRIVE_SPEED}); // MOVE FROM SIDE
+  chassis.pid_wait();
+  chassis.pid_turn_set({10_in, -71_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{10_in, -71_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({24_in, -71_in}, rev, TURN_SPEED); // last long goal
+  chassis.pid_wait();
+  chassis.pid_odom_set({{24_in, -71_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  intakeUpperGoal();
+  pros::delay(2000);
+  intakeHoard();
+  littleSirWilliam.set_value(true);
+  chassis.pid_odom_set({{-7.5_in, -71_in}, fwd, 40});
+  chassis.pid_wait();
+  pros::delay(1000);
+  chassis.pid_odom_set({{24_in, -71_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  littleSirWilliam.set_value(false);
+  intakeUpperGoal();
+  pros::delay(2000);
+  cut_intake();
+  chassis.pid_odom_set({{10_in, -71_in}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_turn_set({-1.5_in, -54_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-1.5_in, -54_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_swing_set(ez::LEFT_SWING, 90_deg, 90);
+  descore_mech.set_value(true);
+  intakeHoard();
+  chassis.pid_turn_set({-9_in, -24_in}, fwd, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-9_in, -24_in}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+}
+
+// 118, 37 // matchloader side
+// 101, -58 // in front of matchloader
+// 54, -71 // bridge
+// 7, -55 // between
+// 30, -55 // long goal
+// -10, -56 // match loader
+// -10, -10 // park
+
+void skillsother() {
+  pros::adi::DigitalOut littleSirWilliam('A');
+  pros::adi::DigitalOut descore_mech('B');
+  descore_mech.set_value(false);
   // Goes to the MIDDLE first
   intakeHoard();
   chassis.pid_drive_set(22_in, 40, true);

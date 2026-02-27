@@ -36,8 +36,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Skills 70 points", skillsSeventy},
-      {"Skills (just position block below park zone)", skills},
+      {"Skills 70 points", skills},
+      {"Skills (just position block below park zone)", skillsSeventy},
       {"SoloAWP (starts from right)", soloAWP_lower},
       {"Elim Right 4 block + Middle bottom", elim_right_middle},
       {"Elim Left Middle", elim_left_middle},
@@ -177,9 +177,11 @@ void ez_template_extras() {
     }
 
     if (master.get_digital(DIGITAL_A) && master.get_digital(DIGITAL_LEFT)) {
-      pros::lcd::print(4, "theta: %f", std::round(float (chassis.odom_theta_get())));
-      pros::lcd::print(5, "x: %f", std::round(float (chassis.odom_x_get())));
-      pros::lcd::print(6, "y: %f", std::round(float (chassis.odom_y_get())));
+      ez::screen_print("x: " + util::to_string_with_precision(chassis.odom_x_get()) +
+                               "\ny: " + util::to_string_with_precision(chassis.odom_y_get()) +
+                               "\na: " + util::to_string_with_precision(chassis.odom_theta_get())+
+                               " JEBOBOSIS 4 EVER",
+                           1);  // Don't override the top Page line
     }
 
     // Allow PID Tuner to iterate
