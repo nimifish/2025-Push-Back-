@@ -271,7 +271,8 @@ void opcontrol() {
     else if (master.get_digital(DIGITAL_R1)){ //intake
 
       if (master.get_digital(DIGITAL_L2)){ //4th intake switch lowergoal
-        intakeLowerGoalMatch();}
+        intakeLowerGoalMatch();
+      }
 
       else if (master.get_digital(DIGITAL_L1)){ // hold button to hoard
         intakeUpperGoal();} // hoard intake
@@ -283,6 +284,10 @@ void opcontrol() {
     else { //if no buttons are pressed i surely hope the motors arent spinning.
       intakepiston.set_value(false);
       cut_intake();
+    }
+
+    if (master.get_digital(DIGITAL_RIGHT)){
+      intakeLowerGoalSkills();
     }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
