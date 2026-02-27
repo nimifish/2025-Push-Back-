@@ -408,7 +408,7 @@ void elim_right(){
   littleSirWilliam.set_value(false);
   chassis.pid_turn_set(0_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(10_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(10.7_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 50); 
   chassis.pid_wait();
@@ -431,8 +431,10 @@ void elim_right_middle(){
   chassis.pid_drive_set(14_in, 60, true); 
   chassis.pid_wait();
   // pros::delay(80); // enough to get 3 blocks)
-  chassis.pid_drive_set(-34_in, 110, true); 
+  chassis.pid_drive_set(-32.5_in, 50, true); 
   chassis.pid_wait();
+  cut_intake();
+  pros::delay(100);
   intakeUpperGoal();
   pros::delay(1000); // (enough to score 4 blocks)
   chassis.pid_drive_set(8_in, DRIVE_SPEED, true); 
@@ -441,21 +443,22 @@ void elim_right_middle(){
   cut_intake();
   chassis.pid_turn_set(0_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-13.2_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
-  chassis.pid_turn_set(-135_deg, 50); 
+  chassis.pid_turn_set(-132_deg, 50); 
   chassis.pid_wait();
   intakeHoard();
-  chassis.pid_drive_set(30.5_in, 70, true); 
+  chassis.pid_drive_set(34_in, 70, true); 
   chassis.pid_wait();
   intakepiston.set_value(true);
   outtake();
   pros::delay(1100); // enough to score 3 blocks
-  chassis.pid_drive_set(-32_in, DRIVE_SPEED, true); 
+  intakepiston.set_value(false);
+  chassis.pid_drive_set(-36_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(30_in, 60, true); 
+  chassis.pid_drive_set(33_in, 60, true); 
   chassis.pid_wait();
 }
 
@@ -491,7 +494,7 @@ void elim_left(){
   cut_intake();
   chassis.pid_turn_set(0_deg, 50); 
   chassis.pid_wait();
-  chassis.pid_drive_set(-9.5_in, DRIVE_SPEED, true); 
+  chassis.pid_drive_set(-10.7_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, 50); 
   chassis.pid_wait();
