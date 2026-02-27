@@ -138,44 +138,44 @@ void skills() {
   chassis.pid_wait();
   chassis.pid_odom_set({{20_in, -83_in}, rev, DRIVE_SPEED}); // MOVE FROM SIDE
   chassis.pid_wait();
-  chassis.pid_turn_set({10_in, -71_in}, rev, TURN_SPEED);
+  chassis.pid_turn_set({10_in, -73_in}, rev, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{10_in, -71_in}, rev, DRIVE_SPEED});
+  chassis.pid_odom_set({{10_in, -73_in}, rev, DRIVE_SPEED});
   chassis.pid_wait();
-  chassis.pid_turn_set({26_in, -70_in}, rev, TURN_SPEED); // last long goal
+  chassis.pid_turn_set({26_in, -72_in}, rev, TURN_SPEED); // last long goal
   chassis.pid_wait();
-  chassis.pid_odom_set({{26.3_in, -70_in}, rev, 40});
+  chassis.pid_odom_set({{26.3_in, -72_in}, rev, 40});
   chassis.pid_wait();
   outtake();
   intakeUpperGoal();
   littleSirWilliam.set_value(true);
   pros::delay(2000);
-  chassis.pid_odom_set({{26.3_in, -69_in}, rev, 20});
+  chassis.pid_odom_set({{26.3_in, -72_in}, rev, 20});
   chassis.pid_wait();
   intakeHoard();
-  chassis.pid_odom_set({{-7_in, -69_in}, fwd, 60});
+  chassis.pid_odom_set({{-7_in, -72_in}, fwd, 60});
   chassis.pid_wait();
   pros::delay(1500);
-  chassis.pid_odom_set({{26.3_in, -69_in}, rev, 40});
+  chassis.pid_odom_set({{26.3_in, -72_in}, rev, 40});
   chassis.pid_wait();
   littleSirWilliam.set_value(false);
   outtake();
   intakeUpperGoal();
   pros::delay(2000);
-  chassis.pid_odom_set({{26.3_in, -69_in}, rev, 20});
+  chassis.pid_odom_set({{26.3_in, -72_in}, rev, 20});
   chassis.pid_wait();
   cut_intake();
-  chassis.pid_odom_set({{10_in, -69_in}, fwd, DRIVE_SPEED});
+  chassis.pid_odom_set({{10_in, -72_in}, fwd, DRIVE_SPEED});
   chassis.pid_wait();
-  chassis.pid_turn_set({10_in, -22_in}, fwd, TURN_SPEED);
+  chassis.pid_turn_set({10_in, -25_in}, fwd, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{10_in, -22_in}, fwd, DRIVE_SPEED});
+  chassis.pid_odom_set({{10_in, -25_in}, fwd, DRIVE_SPEED});
   chassis.pid_wait();
   intakeHoard();
   descore_mech.set_value(true);
-  chassis.pid_turn_set({-15_in, -22_in}, fwd, TURN_SPEED);
+  chassis.pid_turn_set({-15_in, -25_in}, fwd, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-15_in, -22_in}, fwd, 70});
+  chassis.pid_odom_set({{-15_in, -25_in}, fwd, 70});
   chassis.pid_wait();
 }
 
