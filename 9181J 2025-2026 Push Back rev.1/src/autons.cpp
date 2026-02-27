@@ -287,7 +287,7 @@ void skillsother() {
   chassis.pid_drive_set(-45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
   intakeDebug();
-  intakeLowerGoal();
+  intakeLowerGoalSkills();
   pros::delay(800);
   chassis.pid_drive_set(45_in, DRIVE_SPEED, true); 
   chassis.pid_wait();
@@ -525,7 +525,7 @@ void elim_left_middle(){
   chassis.pid_wait();
   outtake();
   pros::delay(200);
-  intakeLowerGoal();
+  intakeLowerGoalSkills();
   pros::delay(1200);
   chassis.pid_drive_set(33_in, 110, true); 
   chassis.pid_wait();
