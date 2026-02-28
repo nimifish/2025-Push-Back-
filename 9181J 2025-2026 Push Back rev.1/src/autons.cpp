@@ -553,8 +553,10 @@ void elim_left_middle(){
   chassis.pid_drive_set(-33_in, 50, true); 
   chassis.pid_wait();
 }
-void elim_left_all(){
 
+void drive_forwards(){
+  chassis.pid_drive_set(5_in, 50, true);
+  chassis.pid_wait();
 }
 
 void blue_autonomous_right() {

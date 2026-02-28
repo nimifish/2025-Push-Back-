@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "9181J Push Back rev1",
+    "project_name": "Drive Forwards",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -425,7 +425,8 @@
     },
     "upload_options": {
       "description": "REVISION1",
-      "icon": "power"
+      "icon": "power",
+      "slot": 6
     },
     "use_early_access": false
   }

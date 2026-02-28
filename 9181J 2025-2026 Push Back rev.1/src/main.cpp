@@ -36,11 +36,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Skills 70 points", skills},
-      {"Skills (just position block below park zone)", skillsSeventy},
-      {"SoloAWP (starts from right)", soloAWP_lower},
+      {"drive forwards", drive_forwards},
       {"Elim Right 4 block + Middle bottom", elim_right_middle},
       {"Elim Left Middle", elim_left_middle},
+      {"Skills 70 points", skills},
+      {"Skills (just position block below park zone)", skillsSeventy},
       {"Elim Left 4 block", elim_left},
       {"Elim Right 4 block", elim_right}
   });
